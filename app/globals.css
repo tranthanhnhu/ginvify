@@ -4,12 +4,14 @@
   --color-bg-0: #050607;
   --color-bg-1: #0a0d10;
   --color-bg-2: #11161a;
-  --color-lime: #b7ff3c;
+  --color-lime: #a3e635;
   --color-cyan: #5ce1e6;
   --color-fg: #f2f4f5;
   --color-fg-muted: #9aa3a8;
+  --color-on-lime: #050607;
 
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-space-grotesk), ui-sans-serif, sans-serif;
 
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -27,10 +29,11 @@
   --bg-0: #050607;
   --bg-1: #0a0d10;
   --bg-2: #11161a;
-  --lime: #b7ff3c;
+  --lime: #a3e635;
   --cyan: #5ce1e6;
   --fg: #f2f4f5;
   --fg-muted: #9aa3a8;
+  --on-lime: #050607;
 
   --type-display: clamp(3.5rem, 8vw, 7.5rem);
   --type-h1: clamp(2.5rem, 5vw, 4.5rem);
@@ -95,24 +98,31 @@ button {
 }
 
 .type-display {
+  font-family: var(--font-display);
   font-size: var(--type-display);
-  font-weight: 500;
-  letter-spacing: -0.04em;
+  font-weight: 600;
+  letter-spacing: -0.035em;
   line-height: 0.95;
 }
 
 .type-h1 {
+  font-family: var(--font-display);
   font-size: var(--type-h1);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
 
 .type-h2 {
+  font-family: var(--font-display);
   font-size: var(--type-h2);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 .type-label {

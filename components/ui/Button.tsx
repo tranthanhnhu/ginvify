@@ -14,11 +14,10 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-lime text-bg-0 hover:brightness-110 focus-visible:outline-lime",
+    "bg-lime text-[#050607] hover:brightness-105 focus-visible:outline-lime",
   secondary:
     "border border-fg/25 text-fg hover:border-cyan hover:text-cyan focus-visible:outline-cyan",
-  ghost:
-    "text-fg-muted hover:text-fg focus-visible:outline-fg",
+  ghost: "text-fg-muted hover:text-fg focus-visible:outline-fg",
 };
 
 export function Button({
@@ -40,7 +39,11 @@ export function Button({
   if (href) {
     const { type: _type, ...rest } = props;
     return (
-      <a href={href} className={classes} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <a
+        href={href}
+        className={classes}
+        {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
         {children}
       </a>
     );

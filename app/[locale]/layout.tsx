@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/navigation/Footer";
 import { SmoothScroll } from "@/components/animation/SmoothScroll";
 import { SetHtmlLang } from "@/components/i18n/SetHtmlLang";
 import { DictionaryProvider } from "@/components/i18n/DictionaryProvider";
@@ -28,6 +29,7 @@ export default async function LocaleLayout({
         <SetHtmlLang locale={locale} />
         <Navbar locale={locale} labels={dict.nav} />
         <main>{children}</main>
+        <Footer locale={locale} />
       </SmoothScroll>
     </DictionaryProvider>
   );

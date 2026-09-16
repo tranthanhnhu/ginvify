@@ -2,10 +2,11 @@ export const colors = {
   bg0: "#050607",
   bg1: "#0A0D10",
   bg2: "#11161A",
-  lime: "#B7FF3C",
+  lime: "#A3E635",
   cyan: "#5CE1E6",
   fg: "#F2F4F5",
   fgMuted: "#9AA3A8",
+  onLime: "#050607",
 } as const;
 
 export const typeScale = {
