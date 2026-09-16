@@ -39,16 +39,18 @@ export function IntelligenceCore({
   const count = isMobile ? particleCounts.mobile : particleCounts.desktop;
 
   const morphState = useMemo(() => {
-    if (reducedMotion) {
-      return morphForSection(activeSection === "hero" ? "idea" : activeSection);
-    }
+    // Scroll-scrubbed: Hero top = G; scroll down dissolves; scroll up restores G
     if (activeSection === "hero") {
-      if (ideaProgress > 0.2) return "network" as const;
-      if (scrollProgress > 0.45) return "cluster" as const;
+      if (reducedMotion) return "g" as const;
+      if (scrollProgress < 0.25) return "g" as const;
+      if (scrollProgress < 0.55) return "cluster" as const;
       return "network" as const;
     }
+    if (reducedMotion) {
+      return morphForSection(activeSection);
+    }
     return morphForSection(activeSection);
-  }, [activeSection, ideaProgress, reducedMotion, scrollProgress]);
+  }, [activeSection, reducedMotion, scrollProgress]);
 
   const connectionDensity = useMemo(() => {
     if (isMobile) return 0.32;
@@ -84,6 +86,7 @@ export function IntelligenceCore({
   ]);
 
   const accent = useMemo(() => {
+    if (activeSection === "hero" && scrollProgress < 0.25) return colors.lime;
     if (activeSection === "ai") return colors.cyan;
     if (activeSection === "automation") return colors.cyan;
     if (activeSection === "engineering") return colors.lime;
@@ -98,15 +101,16 @@ export function IntelligenceCore({
     if (activeSection === "contact") return colors.lime;
     if (activeSection === "idea" || ideaProgress > 0.5) return colors.lime;
     return colors.cyan;
-  }, [activeSection, ideaProgress, servicesHover, techGroup]);
+  }, [activeSection, ideaProgress, scrollProgress, servicesHover, techGroup]);
 
   const intensity = useMemo(() => {
+    if (activeSection === "hero" && scrollProgress < 0.25) return 1;
     if (activeSection === "experiments") return 0.35;
     if (activeSection === "about") return 0.45;
     if (activeSection === "contact") return 0.95;
     if (activeSection === "services" && servicesHover !== null) return 1;
     return 0.75 + sectionProgress * 0.2;
-  }, [activeSection, sectionProgress, servicesHover]);
+  }, [activeSection, scrollProgress, sectionProgress, servicesHover]);
 
   if (paused) return null;
 
@@ -133,11 +137,14 @@ export function IntelligenceCore({
         positionsRef={positionsRef}
         count={count}
         density={connectionDensity}
-        visible={!reducedMotion || activeSection !== "hero"}
+        visible={morphState !== "g"}
         accent={accent}
       />
 
-      {!isMobile && !reducedMotion && activeSection !== "experiments" && (
+      {!isMobile &&
+        !reducedMotion &&
+        activeSection !== "experiments" &&
+        morphState !== "g" && (
         <DataStream
           count={activeSection === "automation" ? 4 : 3}
           reducedMotion={reducedMotion}

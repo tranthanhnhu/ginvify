@@ -53,8 +53,19 @@ export function ScrollStory({ children }: { children: ReactNode }) {
         end: "center center",
         scrub: reduced ? false : 0.6,
         onUpdate: (self) => {
-          setScrollStore({ progress: self.progress });
+          setScrollStore({
+            progress: self.progress,
+            // Keep hero as active while this scrub range owns the morph
+            ...(self.progress < 0.98
+              ? { activeSection: "hero" as const, sectionProgress: self.progress }
+              : {}),
+          });
         },
+        onEnter: () => setScrollStore({ activeSection: "hero" }),
+        onEnterBack: () =>
+          setScrollStore({ activeSection: "hero", progress: 0 }),
+        onLeaveBack: () =>
+          setScrollStore({ activeSection: "hero", progress: 0 }),
       });
 
       ScrollTrigger.create({

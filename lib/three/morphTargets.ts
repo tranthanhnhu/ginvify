@@ -136,7 +136,8 @@ export function getTargetArray(
 export function morphForSection(section: StorySection): MorphTargetName {
   switch (section) {
     case "hero":
-      return "network";
+    case "contact":
+      return "g";
     case "idea":
     case "services":
     case "ai":
@@ -150,8 +151,6 @@ export function morphForSection(section: StorySection): MorphTargetName {
       return "constellation";
     case "experiments":
       return "cluster";
-    case "contact":
-      return "g";
     default:
       return "network";
   }
