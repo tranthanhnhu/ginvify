@@ -1,52 +1,47 @@
 ---
-description: Rules for the Ginvify Cat mascot component. Keep scope small and isolated.
+description: Rules for the Ginvify Cat mascot — 404/empty now; always-on companion in Phase 5.
 globs: components/mascot/**
 alwaysApply: false
 ---
 
 # GINVIFY CAT — MASCOT RULES
 
-Applies to anything under `components/mascot/`. See spec Section 5B.
+Applies to anything under `components/mascot/`. See spec Section 5B and
+Section 31 (Phase 5).
 
 ## What it is
 
-- A minimal, geometric, line-art cute cat — built from the same visual
-  vocabulary as the Intelligence Core (thin outlines, small circular "node"
-  joints at ears/paws/tail tip, optional soft glow in `#B7FF3C` or
-  `#5CE1E6` on hover / in dark sections).
-- Not a cartoon character, not a plush illustration, not a "SaaS mascot."
-  No separate cartoon color palette — stay within the site's near-black +
-  accent-color system.
-- No dialogue, no personality-driven copy, no jokes. It's a quiet visual
-  signature, not a brand character with a voice.
+- A cute geometric / line-art cat in the site's near-black + lime/cyan
+  vocabulary (node joints at ears/paws/tail tip).
+- Allowed to be expressive (hop, walk, blink) while staying premium —
+  not a plush 3D toy, not neon cartoon, not a talking brand character.
+- No dialogue, no puns, no "mascot voice" in nearby copy.
 
-## Where it is allowed to appear (exhaustive list)
+## Phase split
 
-- 404 / error page.
-- Empty states (e.g. empty filtered results in Experiments, empty
-  contact-form confirmation state).
-- A small, unobtrusive footer easter egg near the language switch or
-  copyright line.
-- Optional lightweight loading indicator on non-critical pages only.
+- **Phase 2+ (minimal):** 404 / empty-state / contact-success variants.
+- **Phase 5 (companion):** always-on floating cat on every page with
+  idle / walk / jump / scroll-reactive states via `CompanionShell`.
+- **Do not** build the global floating companion during Phase 4
+  (Experience polish).
+
+## Where it is allowed
+
+- Persistent fixed companion (Phase 5) — corner of viewport, all routes.
+- 404 / error pages.
+- Empty states (Experiments filter empty, contact success).
+- Optional tiny footer mark.
 
 ## Where it must NEVER appear
 
-- Hero.
-- Main scroll story (Idea → Architecture → Intelligence → Software →
-  Automation → Scale).
-- Services, AI, Automation, Engineering, Technology sections.
-- Navigation or as the primary logo (the primary logo is the static G
-  logotype — the particle version of the G is reserved for the 3D
-  experience only).
+- As the primary logo or nav wordmark (static G remains the logo).
+- Inside `components/three/` or replacing the G → Core scroll narrative.
+- Covering primary CTAs (must dodge / minimize on small screens).
 
 ## Implementation
 
-- Single reusable component: `GinvifyCat.tsx`, SVG line-art, a few
-  animation variants (idle, blink, tail-flick, wave for empty states).
-- Provide a static fallback pose for `prefers-reduced-motion`.
-- Meaningful alt text / accessible description required wherever it's used
-  — never a decoration-only image with no semantic fallback.
-- Keep this component's imports isolated: it should never be imported into
-  any file under `components/three/` or the homepage scroll-story sections.
-  If you find yourself doing that, stop — it's out of scope for where the
-  mascot belongs.
+- `GinvifyCat.tsx` (+ `CompanionShell.tsx` in Phase 5).
+- State machine: idle, blink, walk, jump/hop, scroll-react.
+- `prefers-reduced-motion` → static pose.
+- Accessible name / description required.
+- Global mount from locale layout in Phase 5 only.

@@ -32,19 +32,18 @@ Use these websites as design references only. Create an original Ginvify visual 
 
 This document is meant to be fed to an AI coding agent (Claude Code, Codex, Cursor, etc.).
 
-**Do not ask the agent to build all pages and features in one pass.** Build in four phases, in order, and do not move to the next phase until the current one is genuinely good — not just "working."
+**Do not ask the agent to build all pages and features in one pass.** Build in six phases, in order, and do not move to the next phase until the current one is genuinely good — not just "working."
 
 ```
-PHASE 1                          PHASE 2                         PHASE 3                        PHASE 4
-Design System                    Homepage sections                All subpages                   Performance
-+ Hero                           + Services                       + EN/JP i18n                    + Mobile
-+ Three.js Core                  + AI section                     + Contact                        + Animation polish
-+ Scroll Engine                  + Automation section              + SEO                            + Accessibility
-+ Signature Effect (G-Core)      + Technology constellation
-   ↓                                ↓                                 ↓                                ↓
+PHASE 1          PHASE 2            PHASE 3           PHASE 4              PHASE 5              PHASE 6
+Design System    Homepage sections  All subpages      Experience polish    Persistent mascot   Hardening
++ Hero           + Services         + EN/JP i18n      + Scroll-scrubbed G  + Always-on cat      + Mobile
++ Three.js Core  + AI / Automation  + Contact         + UI readability     + Walk/jump/scroll   + Perf
++ Scroll Engine  + Technology       + SEO             + Footer / fonts     + Cute companion     + A11y
++ Signature G    + Experiments/About                  + Button contrast                         + Polish
 ```
 
-**Phase 1 is the most important phase.** If the Hero, the 3D Intelligence Core, the signature "G" effect, and the scroll storytelling engine are not excellent, adding ten more pages will not save the website. Do not let the agent rush past Phase 1 to get to "more content." Review and approve Phase 1 before continuing.
+**Phase 1 is the most important phase for structure.** Phase 4 is the quality gate for the G-signature *feeling* (scroll-driven, not a 1–2s intro flash). Phase 5 adds the persistent companion mascot. Phase 6 hardens performance and accessibility. Do not skip ahead.
 
 See **Section 31 — Development Priority & Phased Build Plan** for the detailed breakdown of what belongs in each phase.
 
@@ -327,8 +326,8 @@ network contracts back into the G
 
 ### Where it appears
 
-* **Hero (entry):** the G forms first, briefly, then dissolves into the particle field that becomes the Intelligence Core. This is the first thing a visitor sees.
-* **Scroll story (Sections 8–13):** the same particle system reshapes itself as the user scrolls — it never fully disappears and never gets replaced by an unrelated 3D object. Nodes that were part of the G are the same nodes that become the AI network, the automation workflow, and the architecture diagram.
+* **Hero (entry):** the G is the default resting shape at the top of the page. As the visitor scrolls down, it dissolves into the particle field / Intelligence Core. Scrolling back up returns smoothly to the G (scroll-scrubbed morph — not a one-shot 1–2 second intro that disappears forever).
+* **Scroll story (Sections 8–13):** the same particle system reshapes itself as the user scrolls — it never fully disappears and never gets replaced by an unrelated 3D object. Nodes that were part of the G are the same nodes that become the AI network, the automation workflow, and the architecture diagram. Morph direction follows scroll (down = evolve away from G; up = return toward G when near the hero).
 * **Contact / final section:** the network converges back into the G as the final beat, immediately before the "LET'S BUILD WHAT'S NEXT." headline. This is the visual "exhale" that closes the story.
 * **Loading state:** a lightweight, low-cost version of the G-forming-from-particles animation can be used as the site's loading/transition motif (see Section 19, Page Transitions) instead of a generic spinner.
 * **Favicon / logo mark:** the static G is the logotype used in navigation and favicon; the particle version is reserved for the 3D experience only, never for small UI elements.
@@ -337,48 +336,48 @@ network contracts back into the G
 
 * Build this as ONE reusable core system (see `/components/three/IntelligenceCore.tsx` in Section 6 and 27), not one 3D object per section. Sections change the *state* of the core (its shape, node count, connection pattern, color emphasis), not the underlying object.
 * The G shape can be generated from an SVG path of the logo, sampled into a point cloud, and used as one of several "target shapes" the particle system can morph toward (G → sphere/node-cluster → network graph → workflow diagram → G).
-* Keep this effect scoped to Phase 1. Do not attempt automation/AI/architecture section states until the core G-dissolve-and-reform loop itself already looks excellent.
+* **Scroll is the source of truth for morph.** Do not rely on a short autoplay intro that shows G for 1–2 seconds and then abandons it. Prefer ScrollTrigger scrub (or equivalent) so scrolling down evolves the shape and scrolling up restores the G when returning to the hero. A brief optional intro is fine only if it hands off cleanly to scroll control.
+* Keep the core G ⇄ network loop excellent before layering later section states. Phase 4 (Experience polish) is explicitly for fixing scroll-scrubbed G behavior if Phase 1 left an intro-only flash.
 * On mobile / reduced-motion, keep the *concept* (G appears, subtly resolves into a simplified static or lightly-animated network) but drop the expensive parts — see Section 22 and 23.
 
 ---
 
 # 5B. MASCOT — GINVIFY CAT
 
-Ginvify has a small, quiet mascot: a minimal, geometric cute cat. It is a supporting character, not a headline element — the premium/editorial/engineering feel from Section 28 always comes first. The mascot exists to add warmth and memorability in a few specific, low-frequency moments, not to make the site feel playful or startup-cute overall.
+Ginvify has a cute geometric cat companion. It adds warmth without turning the site into a cartoon brand. The premium/editorial/engineering feel from Section 28 always comes first; the cat supports that feel, it does not replace it.
 
 ### Visual style
 
-* Not a cartoon, not a plush mascot, not a "SaaS illustration" character. It should look like it belongs in the same visual system as the nodes, particles and line-diagrams used elsewhere on the site.
-* Constructed as **minimal line-art / low-poly geometry**, built from the same visual vocabulary as the Intelligence Core: thin outlines, small circular "node" joints at key points (ears, paws, tail tip), optional soft glow in the accent colors (`#B7FF3C` lime or `#5CE1E6` cyan) on hover or in dark sections.
-* Two allowed forms:
-  1. **Line-art cat icon** — a simple, cute, geometric outline (sitting pose, tail curled), used as a static or lightly-animated SVG.
-  2. **Particle cat** — for one special moment only (see "Where it appears" below), the cat can be formed from the same particle system as the G, as a rare easter-egg variant of the signature effect. This should be treated as optional/stretch scope, built only after Section 5A's core loop is solid.
-* Color: primarily the site's near-black/charcoal palette with lime or cyan accents. Never a separate cartoon color palette (no pink, no bright multicolor).
+* Geometric / line-art first, allowed to be **clearly cute** (expressive ears, soft hop, tail motion) while staying in the site's near-black + lime/cyan vocabulary.
+* Constructed from the same visual language as the Intelligence Core: thin outlines, small circular "node" joints (ears, paws, tail tip), optional soft accent glow.
+* Two forms:
+  1. **Companion cat** (Phase 5) — polished SVG (or lightweight canvas/Lottie-equivalent) with idle / walk / jump / scroll-reactive states; always present as a fixed-layer companion.
+  2. **Minimal line-art** — simpler variant for 404 / empty states if the full companion is reduced.
+* Optional stretch: a rare particle-cat easter egg formed from the same particle system as the G — only after Section 5A is solid.
+* Never a separate candy-colored cartoon palette; never a heavy 3D plush that fights the WebGL Core.
 
 ### Personality
 
-Curious, quiet, precise — a small companion to the engineering story, not a talking brand character. It does not have a voice, dialogue, or a "personality-driven" role in copy. It is a visual signature, similar to how some engineering/dev-tool brands use a small creature as a favicon or empty-state companion (e.g. GitHub's Octocat, Slack's early mascots) without letting it dominate the brand.
+Curious, quiet, precise — a small companion to the engineering story. No dialogue, no puns, no "mascot voice" in copy.
 
-### Where it appears (keep this list short and intentional)
+### Where it appears
 
-* **404 / error page:** the cat sitting next to a short, calm message (no jokes, no long copy) — this is the primary, safe place for it to show up.
-* **Empty states:** e.g. an empty contact-form confirmation state, or an empty state on an experiments/portfolio filter with no results.
-* **Favicon alternate / footer easter egg:** a tiny static line-art cat icon, small and unobtrusive, e.g. tucked into the footer near the language switch or copyright line — something attentive visitors notice, not something pushed in front of everyone.
-* **Loading micro-state (optional, low priority):** a small looping line-art cat animation (e.g. tail flick, blink) as an alternative/lighter loading indicator on non-critical pages (not the homepage hero, which uses the G-effect from Section 5A).
+* **Persistent companion (Phase 5):** fixed on-screen across all pages/locales (corner placement). May pace, hop, or react lightly to scroll/route changes. Must not cover primary CTAs; on small screens may minimize or dock.
+* **404 / error page** and **empty states** (Experiments filter empty, contact success) — calm presence.
+* **Footer:** optional tiny static mark near copyright / language (in addition to the floating companion, keep it subtle).
 
 ### Where it must NOT appear
 
-* Not in the hero.
-* Not in the main scroll story (Sections 8–13) — it must never compete with or dilute the G → Intelligence Core narrative.
-* Not on the Services, AI, Automation, Technology, or Engineering sections.
-* Not in the main navigation or as the primary logo.
-* Not accompanied by cutesy copywriting, puns, or a "mascot voice." Keep all surrounding text in the same precise, restrained tone as the rest of the site (Section 28).
+* Not as the primary logo or nav wordmark (static G logotype remains the logo).
+* Not inside `components/three/` or as a replacement for the G → Intelligence Core narrative.
+* Not accompanied by cutesy marketing copy.
 
 ### Implementation
 
-* Build as a standalone, reusable component: `/components/mascot/GinvifyCat.tsx` (SVG line-art, a few animation variants: idle, blink, tail-flick, wave for empty states).
-* Respect `prefers-reduced-motion` — the cat should have a static fallback pose.
-* Treat this as **Phase 2 or later scope** (see Section 31). It should never be prioritized over the Hero, the Intelligence Core, or the scroll engine in Phase 1.
+* Components under `/components/mascot/` — e.g. `GinvifyCat.tsx` + `CompanionShell.tsx` (global mount from locale layout in Phase 5).
+* Animation state machine: idle, blink, walk, jump/hop, scroll-react; static fallback for `prefers-reduced-motion`.
+* Meaningful accessible name / description required.
+* **Phase 2** may ship a minimal 404/empty cat. **Phase 5** is the full always-on companion. Do not build the floating companion during Phase 4 Experience polish.
 
 ---
 
@@ -1278,7 +1277,7 @@ Build one continuous visual story — one object, evolving, from G to G.
 
 # 31. DEVELOPMENT PRIORITY & PHASED BUILD PLAN
 
-**Do not ask the coding agent to build all 15+ pages in a single pass.** Split the work into four phases and review each one before continuing to the next. This section replaces a flat priority list with an explicit phase boundary the agent must respect.
+**Do not ask the coding agent to build all 15+ pages in a single pass.** Split the work into six phases and review each one before continuing to the next. This section replaces a flat priority list with an explicit phase boundary the agent must respect.
 
 ## PHASE 1 — Foundation (build this first, and make it excellent before moving on)
 
@@ -1300,26 +1299,43 @@ Build one continuous visual story — one object, evolving, from G to G.
 11. Technology constellation
 12. Experiments section
 13. About section
-14. Mascot component build-out (Section 5B) — 404/empty-state variants; keep isolated from Phase 1 scenes
+14. Minimal mascot for 404/empty only (full always-on companion is Phase 5)
 
-**Gate before Phase 3:** the full homepage scroll story, G-to-G included, should read as one continuous journey per Section 30.
+**Gate before Phase 3:** the full homepage scroll story should read as one continuous journey per Section 30 (Contact close-the-loop lands in Phase 3).
 
 ## PHASE 3 — Full site, i18n, contact, SEO
 
-15. Contact section + form
+15. Contact section + form (network → G before "LET'S BUILD WHAT'S NEXT.")
 16. All remaining routes from Section 20
 17. Service detail pages (Section 21)
 18. Japanese localization (Section 26)
 19. SEO implementation (Section 25)
 
-## PHASE 4 — Hardening
+## PHASE 4 — Experience polish (G scroll + UI readability)
 
-20. Responsive / mobile optimization (Section 22)
-21. Performance optimization (Section 23)
-22. Accessibility pass (Section 24)
-23. Final animation polish across all pages
+20. Scroll-scrubbed G signature: G persists at top / returns when scrolling up; dissolve evolves on scroll down — not a 1–2s intro flash
+21. UI readability: borders/scrims/contrast on text blocks over WebGL
+22. Footer redesign + typography adjustments
+23. Primary button contrast (dark text on lime; reduce neon glare)
 
-**General rule:** first make the structure correct. Then make it beautiful. Then make it fast. Do not skip ahead to later-phase work (extra pages, extra polish) while earlier-phase foundations are still weak.
+**Gate before Phase 5:** G morph feels continuous both ways; copy and CTAs are readable; footer is acceptable.
+
+## PHASE 5 — Persistent companion mascot
+
+24. Always-on Ginvify Cat companion (Section 5B): idle / walk / jump / scroll-reactive
+25. Global mount on all pages; keep 404/empty variants; respect reduced-motion and CTA clearance
+
+**Gate before Phase 6:** companion works on every route EN/JP without blocking primary actions.
+
+## PHASE 6 — Hardening
+
+26. Responsive / mobile optimization (Section 22)
+27. Performance optimization (Section 23)
+28. Accessibility pass (Section 24)
+29. Final animation polish across all pages
+30. Lighthouse (or equivalent) audit → fix by group, commit per group
+
+**General rule:** first make the structure correct. Then make the signature feel right (Phase 4). Then add the companion (Phase 5). Then make it fast and accessible (Phase 6). Do not skip ahead while earlier-phase foundations are still weak.
 
 ---
 

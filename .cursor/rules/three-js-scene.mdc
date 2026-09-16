@@ -7,7 +7,8 @@ alwaysApply: false
 # THREE.JS / INTELLIGENCE CORE RULES
 
 Applies to anything under `components/three/` and `components/animation/`.
-See spec Sections 5A, 6, 22, 23, 27 for full detail.
+See spec Sections 5A, 6, 22, 23, 27 for full detail. Phase 4 Experience
+polish owns scroll-scrubbed G behavior if the intro flash is wrong.
 
 ## Single-core architecture
 
@@ -19,9 +20,17 @@ See spec Sections 5A, 6, 22, 23, 27 for full detail.
   driven by scroll position. Before creating a new Three.js component, check
   whether the need can instead be a new state/prop on the existing core.
 - `GLogoParticles.tsx` holds the G-shaped point cloud (sampled from the logo
-  SVG path) used as one of the core's morph targets — this is what the
-  particle system dissolves from / converges back into at the start and end
-  of the homepage story.
+  SVG path) used as one of the core's morph targets.
+
+## Scroll-scrubbed G (non-negotiable feel)
+
+- Morph is driven primarily by **scroll progress**, not a one-shot intro.
+- Near the top of the homepage (Hero): morph target is **G** (solid/readable).
+- Scrolling down: G dissolves smoothly toward cluster → network → section
+  shapes. Scrolling **up** toward Hero: morph returns to **G** smoothly.
+- Contact section: converge to **G** again before the final headline.
+- Avoid "G shows for 1–2 seconds on load then never comes back until Contact."
+- Optional short intro is OK only if it immediately yields to scroll control.
 
 ## Performance (hard constraints, not suggestions)
 

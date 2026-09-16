@@ -27,40 +27,39 @@ When in doubt, re-read the relevant numbered section of the spec file.
 - Do not overuse gradients. Rely on typography, negative space, motion, depth.
 - Must NOT look like: generic AI startup, generic SaaS template, generic
   Tailwind landing page, random rotating-sphere website, neon cyberpunk,
-  crypto site, gaming site, or a site with a mascot slapped everywhere.
+  crypto site, or gaming site.
+- Primary buttons on lime: use **dark text** (`#050607`), never white on lime.
+- Text over WebGL needs scrims/borders/contrast so copy stays readable.
 - Target feel: "Apple-level restraint + creative WebGL studio + AI
-  engineering laboratory."
+  engineering laboratory" — with one cute companion cat (Phase 5) that
+  does not dominate the brand.
 
 ## The signature system — treat as ONE object, not many
 
 - The brand signature is the G-logo → particle → network morph (spec
   Section 5A). The Hero's "Digital Intelligence Core" IS this object.
-- Every homepage section (Services, AI, Automation, Engineering, Technology)
-  must reuse and reshape the SAME underlying particle/node system — never
-  spin up an unrelated 3D scene per section. If a task seems to need a new
-  3D object for a new section, stop and ask whether it should instead be a
-  new *state* of `IntelligenceCore`.
-- The story closes by converging the network back into the G before the
-  final "LET'S BUILD WHAT'S NEXT." section.
+- Every homepage section must reuse and reshape the SAME underlying
+  particle/node system — never spin up an unrelated 3D scene per section.
+- Morph must be **scroll-scrubbed**: G at top / when scrolling back to Hero;
+  evolve on scroll down; converge to G at Contact. Do not leave a 1–2s
+  intro flash that abandons the G forever (Phase 4 fixes this if needed).
 
-## The mascot — scope is intentionally tiny
+## The mascot
 
-- `components/mascot/GinvifyCat.tsx` is a small, quiet, line-art cat. It is
-  NEVER used in the hero, the main scroll story, Services/AI/Automation/
-  Technology/Engineering sections, or navigation.
-- Approved locations only: 404/error page, empty states, a small footer
-  easter egg, optional lightweight loading state on non-critical pages.
-- No mascot dialogue, no puns, no "mascot voice" in copy near it.
+- Minimal 404/empty cat may exist from Phase 2.
+- **Always-on floating companion** (walk/jump/scroll-reactive) is
+  **Phase 5 only** — see `.cursor/rules/mascot.mdc` and Section 5B.
+- Never the primary logo. Never imported into `components/three/`.
+- No mascot dialogue, puns, or "mascot voice" in copy.
 
 ## Phase discipline — the most important rule in this file
 
-- We build in 4 phases (spec Section 31). Only work on the CURRENT phase
-  unless explicitly told otherwise. Do not add pages, sections, or features
-  that belong to a later phase, even if it seems convenient to do while
-  "already in there."
-- Phase 1 (Design system, Typography, Nav, Hero, Intelligence Core +
-  G-signature, Scroll engine) is the quality gate for the whole project.
-  Never sacrifice Phase-1 polish to rush toward more content.
+- We build in **6 phases** (spec Section 31). Only work on the CURRENT
+  phase unless explicitly told otherwise.
+  1. Foundation  2. Homepage story  3. Full site / i18n / SEO
+  4. Experience polish (G scroll + UI)  5. Persistent mascot
+  6. Hardening (mobile / perf / a11y)
+- Never sacrifice Phase-1/4 signature quality to rush content or mascot.
 - If a request is ambiguous about which phase it belongs to, ask before
   building.
 
