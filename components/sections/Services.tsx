@@ -1,6 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/Container";
+import { SectionPanel } from "@/components/ui/SectionPanel";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
 import { setScrollStore } from "@/lib/scroll/useScrollProgress";
@@ -69,7 +70,7 @@ export function Services() {
     <section
       id="services"
       data-section="services"
-      className="relative z-10 py-28 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/40"
+      className="relative z-10 py-28 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/55"
     >
       <Container className="relative">
         <p className="type-label text-cyan">02 — SERVICES</p>
@@ -84,8 +85,9 @@ export function Services() {
         <ul className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, index) => (
             <li key={service.id}>
-              <article
-                className="group h-full border border-white/10 bg-bg-1/40 p-6 transition-colors duration-300 hover:border-lime/40 hover:bg-bg-2/50"
+              <SectionPanel
+                as="article"
+                className="group h-full transition-colors duration-300 hover:border-lime/45 hover:bg-bg-2/85"
                 onMouseEnter={() => setScrollStore({ servicesHover: index })}
                 onMouseLeave={() => setScrollStore({ servicesHover: null })}
                 onFocus={() => setScrollStore({ servicesHover: index })}
@@ -105,13 +107,13 @@ export function Services() {
                   {service.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="border border-white/10 px-2 py-1 text-[0.65rem] uppercase tracking-[0.12em] text-fg-muted"
+                      className="border border-white/15 bg-bg-0/40 px-2 py-1 text-[0.65rem] uppercase tracking-[0.12em] text-fg-muted"
                     >
                       {tag}
                     </li>
                   ))}
                 </ul>
-              </article>
+              </SectionPanel>
             </li>
           ))}
         </ul>

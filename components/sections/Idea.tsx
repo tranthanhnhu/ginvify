@@ -1,6 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/Container";
+import { SectionPanel } from "@/components/ui/SectionPanel";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
 import { useDictionary } from "@/components/i18n/DictionaryProvider";
@@ -14,20 +15,26 @@ export function Idea() {
       data-section="idea"
       className="relative z-10 flex min-h-[100svh] items-center py-24"
     >
-      <div className="pointer-events-none absolute inset-0 bg-bg-0/35" />
+      <div className="pointer-events-none absolute inset-0 bg-bg-0/45" />
 
       <Container className="relative">
-        <p className="type-label text-cyan">{idea.label}</p>
+        <SectionPanel className="max-w-3xl">
+          <p className="type-label text-cyan">{idea.label}</p>
 
-        <BlurToSharp as="h2" className="type-h1 mt-6 max-w-4xl text-fg">
-          {idea.headline}
-        </BlurToSharp>
+          <BlurToSharp as="h2" className="type-h1 mt-6 text-fg">
+            {idea.headline}
+          </BlurToSharp>
 
-        <Reveal as="p" mode="words" className="mt-16 type-display text-lime/90">
-          {idea.word}
-        </Reveal>
+          <Reveal
+            as="p"
+            mode="words"
+            className="mt-12 type-display text-lime"
+          >
+            {idea.word}
+          </Reveal>
 
-        <p className="mt-8 max-w-md text-fg-muted">{idea.body}</p>
+          <p className="mt-8 max-w-md text-fg-muted">{idea.body}</p>
+        </SectionPanel>
       </Container>
     </section>
   );

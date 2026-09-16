@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { Container } from "@/components/ui/Container";
+import { SectionPanel } from "@/components/ui/SectionPanel";
 import { Button } from "@/components/ui/Button";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { GinvifyCat } from "@/components/mascot/GinvifyCat";
@@ -78,7 +79,7 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
       data-section="contact"
       className="relative z-10 py-28 sm:py-40"
     >
-      <div className="pointer-events-none absolute inset-0 bg-bg-0/50" />
+      <div className="pointer-events-none absolute inset-0 bg-bg-0/60" />
       <Container className="relative">
         <p className="type-label text-lime">{copy.label}</p>
 
@@ -102,34 +103,44 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
           {copy.cta}
         </Button>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-2">
-          <div className="space-y-4 text-fg-muted">
+        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+          <SectionPanel className="space-y-4 text-fg-muted">
             <p className="type-label text-fg">{copy.company}</p>
             <p>{copy.address}</p>
             <p>
-              <a href={`tel:${copy.phone.replace(/\s/g, "")}`} className="hover:text-cyan">
+              <a
+                href={`tel:${copy.phone.replace(/\s/g, "")}`}
+                className="hover:text-cyan"
+              >
                 {copy.phone}
               </a>
             </p>
             <p className="type-label text-fg-muted">Tax ID: {copy.taxId}</p>
-          </div>
+          </SectionPanel>
 
-          <div id="contact-form">
+          <SectionPanel id="contact-form">
             {sent ? (
-              <div className="flex flex-col items-start gap-5 border border-white/10 p-8">
+              <div className="flex flex-col items-start gap-5">
                 <GinvifyCat variant="idle" className="h-20 w-20" />
                 <p className="text-fg">{copy.form.success}</p>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-4">
                 <Field label={copy.form.name} name="name" required />
-                <Field label={copy.form.email} name="email" type="email" required />
+                <Field
+                  label={copy.form.email}
+                  name="email"
+                  type="email"
+                  required
+                />
                 <Field label={copy.form.company} name="company" />
                 <label className="block">
-                  <span className="type-label text-fg-muted">{copy.form.projectType}</span>
+                  <span className="type-label text-fg-muted">
+                    {copy.form.projectType}
+                  </span>
                   <select
                     name="projectType"
-                    className="mt-2 w-full border border-white/15 bg-bg-1 px-3 py-3 text-fg outline-none focus:border-cyan"
+                    className="mt-2 w-full border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan"
                     defaultValue={copy.form.projectTypes[0]}
                   >
                     {copy.form.projectTypes.map((t) => (
@@ -140,12 +151,14 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
                   </select>
                 </label>
                 <label className="block">
-                  <span className="type-label text-fg-muted">{copy.form.message}</span>
+                  <span className="type-label text-fg-muted">
+                    {copy.form.message}
+                  </span>
                   <textarea
                     name="message"
                     rows={4}
                     required
-                    className="mt-2 w-full resize-y border border-white/15 bg-bg-1 px-3 py-3 text-fg outline-none focus:border-cyan"
+                    className="mt-2 w-full resize-y border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan"
                   />
                 </label>
                 <Button type="submit" variant="primary">
@@ -153,7 +166,7 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
                 </Button>
               </form>
             )}
-          </div>
+          </SectionPanel>
         </div>
       </Container>
     </section>
@@ -178,7 +191,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-2 w-full border border-white/15 bg-bg-1 px-3 py-3 text-fg outline-none focus:border-cyan"
+        className="mt-2 w-full border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan"
       />
     </label>
   );
