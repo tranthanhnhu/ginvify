@@ -1,0 +1,76 @@
+---
+description: Ginvify project context — brand, visual direction, phase discipline. Always applied.
+globs:
+alwaysApply: true
+---
+
+# GINVIFY — PROJECT CONTEXT (ALWAYS APPLIED)
+
+Full spec lives at `/ginvify-website-spec.md`. This rule is a compressed reminder
+of the parts that must never be violated, regardless of which phase we're in.
+When in doubt, re-read the relevant numbered section of the spec file.
+
+## Brand
+
+- Company: GINVIFY. Core idea: "Engineering Intelligence." / "From Ideas to
+  Intelligent Systems."
+- Positioning: technology company — Web Applications, AI Engineering, AI
+  Agents, Automation, SaaS Platforms, Landing Pages, Digital Products.
+- Never invent clients, awards, revenue, employee counts, project counts, or
+  testimonials. Conceptual/experimental work must be labeled CONCEPT /
+  EXPERIMENT / PROTOTYPE.
+
+## Visual direction (non-negotiable)
+
+- Dark premium tech aesthetic. Background near-black/charcoal
+  (`#050607`, `#0A0D10`, `#11161A`). Accents: lime `#B7FF3C`, cyan `#5CE1E6`.
+- Do not overuse gradients. Rely on typography, negative space, motion, depth.
+- Must NOT look like: generic AI startup, generic SaaS template, generic
+  Tailwind landing page, random rotating-sphere website, neon cyberpunk,
+  crypto site, gaming site, or a site with a mascot slapped everywhere.
+- Target feel: "Apple-level restraint + creative WebGL studio + AI
+  engineering laboratory."
+
+## The signature system — treat as ONE object, not many
+
+- The brand signature is the G-logo → particle → network morph (spec
+  Section 5A). The Hero's "Digital Intelligence Core" IS this object.
+- Every homepage section (Services, AI, Automation, Engineering, Technology)
+  must reuse and reshape the SAME underlying particle/node system — never
+  spin up an unrelated 3D scene per section. If a task seems to need a new
+  3D object for a new section, stop and ask whether it should instead be a
+  new *state* of `IntelligenceCore`.
+- The story closes by converging the network back into the G before the
+  final "LET'S BUILD WHAT'S NEXT." section.
+
+## The mascot — scope is intentionally tiny
+
+- `components/mascot/GinvifyCat.tsx` is a small, quiet, line-art cat. It is
+  NEVER used in the hero, the main scroll story, Services/AI/Automation/
+  Technology/Engineering sections, or navigation.
+- Approved locations only: 404/error page, empty states, a small footer
+  easter egg, optional lightweight loading state on non-critical pages.
+- No mascot dialogue, no puns, no "mascot voice" in copy near it.
+
+## Phase discipline — the most important rule in this file
+
+- We build in 4 phases (spec Section 31). Only work on the CURRENT phase
+  unless explicitly told otherwise. Do not add pages, sections, or features
+  that belong to a later phase, even if it seems convenient to do while
+  "already in there."
+- Phase 1 (Design system, Typography, Nav, Hero, Intelligence Core +
+  G-signature, Scroll engine) is the quality gate for the whole project.
+  Never sacrifice Phase-1 polish to rush toward more content.
+- If a request is ambiguous about which phase it belongs to, ask before
+  building.
+
+## Engineering baseline
+
+- Stack: Next.js, React, TypeScript, Three.js, React Three Fiber, Drei,
+  GSAP + ScrollTrigger, Lenis, Tailwind CSS.
+- No giant single components — separate UI / animation logic / Three.js
+  scene / mascot / content / localization (spec Section 27).
+- Respect `prefers-reduced-motion` everywhere motion is added.
+- Every animation must communicate something (transformation, intelligence,
+  connection, flow, architecture, scale, automation) — never animation for
+  its own sake (spec Section 29).

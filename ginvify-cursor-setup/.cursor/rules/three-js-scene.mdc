@@ -1,0 +1,52 @@
+---
+description: Rules for the Three.js / React Three Fiber Intelligence Core scene and its components.
+globs: components/three/**,components/animation/**
+alwaysApply: false
+---
+
+# THREE.JS / INTELLIGENCE CORE RULES
+
+Applies to anything under `components/three/` and `components/animation/`.
+See spec Sections 5A, 6, 22, 23, 27 for full detail.
+
+## Single-core architecture
+
+- There is ONE core system: `components/three/IntelligenceCore.tsx`, composed
+  of `NodeNetwork.tsx`, `DataStream.tsx`, `CameraController.tsx`, and
+  `GLogoParticles.tsx`.
+- Sections do not each get their own 3D object. A section changes the core's
+  *state* (target shape, node count, connection pattern, color emphasis),
+  driven by scroll position. Before creating a new Three.js component, check
+  whether the need can instead be a new state/prop on the existing core.
+- `GLogoParticles.tsx` holds the G-shaped point cloud (sampled from the logo
+  SVG path) used as one of the core's morph targets — this is what the
+  particle system dissolves from / converges back into at the start and end
+  of the homepage story.
+
+## Performance (hard constraints, not suggestions)
+
+- Keep draw calls and polygon count low; reuse materials; dispose unused
+  resources on unmount.
+- Lazy-load any GLB/texture assets; use compressed textures, Draco/Meshopt
+  and KTX2 where applicable.
+- Pause off-screen animation using `IntersectionObserver`; never animate a
+  scene that isn't visible.
+- Keep WebGL state outside the normal React render loop where it would
+  otherwise cause unnecessary re-renders.
+- Desktop target: 60 FPS where practical. Mobile target: 30–60 FPS.
+
+## Mobile / reduced-motion
+
+- Do not simply scale the desktop scene down. Build a deliberately lighter
+  mobile composition: fewer particles, simpler geometry, no expensive
+  shaders or post-processing, less continuous animation.
+- The G ⇄ network signature loop must still exist on mobile in a simplified
+  form — never silently remove it, only lighten it.
+- Respect `prefers-reduced-motion`: provide a static or minimally-animated
+  fallback state for the core.
+
+## Accessibility
+
+- WebGL must never be the only carrier of important information. Anything
+  meaningful shown in the 3D scene (headlines, section names, CTAs) must
+  also exist as real semantic HTML.

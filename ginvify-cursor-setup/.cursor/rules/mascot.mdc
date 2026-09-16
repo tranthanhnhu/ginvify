@@ -1,0 +1,52 @@
+---
+description: Rules for the Ginvify Cat mascot component. Keep scope small and isolated.
+globs: components/mascot/**
+alwaysApply: false
+---
+
+# GINVIFY CAT — MASCOT RULES
+
+Applies to anything under `components/mascot/`. See spec Section 5B.
+
+## What it is
+
+- A minimal, geometric, line-art cute cat — built from the same visual
+  vocabulary as the Intelligence Core (thin outlines, small circular "node"
+  joints at ears/paws/tail tip, optional soft glow in `#B7FF3C` or
+  `#5CE1E6` on hover / in dark sections).
+- Not a cartoon character, not a plush illustration, not a "SaaS mascot."
+  No separate cartoon color palette — stay within the site's near-black +
+  accent-color system.
+- No dialogue, no personality-driven copy, no jokes. It's a quiet visual
+  signature, not a brand character with a voice.
+
+## Where it is allowed to appear (exhaustive list)
+
+- 404 / error page.
+- Empty states (e.g. empty filtered results in Experiments, empty
+  contact-form confirmation state).
+- A small, unobtrusive footer easter egg near the language switch or
+  copyright line.
+- Optional lightweight loading indicator on non-critical pages only.
+
+## Where it must NEVER appear
+
+- Hero.
+- Main scroll story (Idea → Architecture → Intelligence → Software →
+  Automation → Scale).
+- Services, AI, Automation, Engineering, Technology sections.
+- Navigation or as the primary logo (the primary logo is the static G
+  logotype — the particle version of the G is reserved for the 3D
+  experience only).
+
+## Implementation
+
+- Single reusable component: `GinvifyCat.tsx`, SVG line-art, a few
+  animation variants (idle, blink, tail-flick, wave for empty states).
+- Provide a static fallback pose for `prefers-reduced-motion`.
+- Meaningful alt text / accessible description required wherever it's used
+  — never a decoration-only image with no semantic fallback.
+- Keep this component's imports isolated: it should never be imported into
+  any file under `components/three/` or the homepage scroll-story sections.
+  If you find yourself doing that, stop — it's out of scope for where the
+  mascot belongs.
