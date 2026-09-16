@@ -25,6 +25,7 @@ const SECTIONS: StorySection[] = [
   "technology",
   "experiments",
   "about",
+  "contact",
 ];
 
 export function ScrollStory({ children }: { children: ReactNode }) {

@@ -17,7 +17,8 @@ export type StorySection =
   | "engineering"
   | "technology"
   | "experiments"
-  | "about";
+  | "about"
+  | "contact";
 
 export type TechGroup = "ai" | "web" | "cloud" | "data" | "automation";
 
@@ -149,6 +150,8 @@ export function morphForSection(section: StorySection): MorphTargetName {
       return "constellation";
     case "experiments":
       return "cluster";
+    case "contact":
+      return "g";
     default:
       return "network";
   }

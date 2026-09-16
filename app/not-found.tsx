@@ -13,10 +13,10 @@ export default function NotFound() {
           The page you&apos;re looking for doesn&apos;t exist — or moved quietly.
         </p>
       </div>
-      <Button href="/" variant="primary">
+      <Button href="/en" variant="primary">
         Back home
       </Button>
-      <Link href="/" className="type-label text-fg-muted hover:text-fg">
+      <Link href="/en" className="type-label text-fg-muted hover:text-fg">
         GINVIFY
       </Link>
     </div>

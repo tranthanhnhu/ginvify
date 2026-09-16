@@ -69,6 +69,8 @@ export function IntelligenceCore({
         return 0.28;
       case "about":
         return 0.35;
+      case "contact":
+        return 0.25 + sectionProgress * 0.2;
       default:
         return 0.45 + ideaProgress * 0.2;
     }
@@ -93,6 +95,7 @@ export function IntelligenceCore({
         ? colors.cyan
         : colors.lime;
     }
+    if (activeSection === "contact") return colors.lime;
     if (activeSection === "idea" || ideaProgress > 0.5) return colors.lime;
     return colors.cyan;
   }, [activeSection, ideaProgress, servicesHover, techGroup]);
@@ -100,6 +103,7 @@ export function IntelligenceCore({
   const intensity = useMemo(() => {
     if (activeSection === "experiments") return 0.35;
     if (activeSection === "about") return 0.45;
+    if (activeSection === "contact") return 0.95;
     if (activeSection === "services" && servicesHover !== null) return 1;
     return 0.75 + sectionProgress * 0.2;
   }, [activeSection, sectionProgress, servicesHover]);

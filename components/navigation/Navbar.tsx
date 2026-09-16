@@ -1,25 +1,72 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
 import { useScrollProgress } from "@/lib/scroll/useScrollProgress";
 import { scrollTo } from "@/lib/scroll/lenis";
+import type { Locale } from "@/lib/i18n/config";
 
-const LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "AI", href: "#ai" },
-  { label: "Technology", href: "#technology" },
-  { label: "Experiments", href: "#experiments" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-] as const;
+type NavLabels = {
+  services: string;
+  ai: string;
+  technology: string;
+  experiments: string;
+  about: string;
+  contact: string;
+  cta: string;
+  menu: string;
+  close: string;
+};
 
-export function Navbar() {
+const DEFAULT_LABELS: NavLabels = {
+  services: "Services",
+  ai: "AI",
+  technology: "Technology",
+  experiments: "Experiments",
+  about: "About",
+  contact: "Contact",
+  cta: "START A PROJECT",
+  menu: "Menu",
+  close: "Close",
+};
+
+type NavbarProps = {
+  locale: Locale;
+  labels?: NavLabels;
+};
+
+export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
   const { scrolled } = useScrollProgress();
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState<"EN" | "JA">("EN");
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome =
+    pathname === `/${locale}` || pathname === `/${locale}/`;
+
+  const links = [
+    {
+      label: labels.services,
+      href: isHome ? "#services" : `/${locale}/services`,
+    },
+    { label: labels.ai, href: isHome ? "#ai" : `/${locale}/#ai` },
+    {
+      label: labels.technology,
+      href: isHome ? "#technology" : `/${locale}/technology`,
+    },
+    {
+      label: labels.experiments,
+      href: isHome ? "#experiments" : `/${locale}/experiments`,
+    },
+    { label: labels.about, href: isHome ? "#about" : `/${locale}/about` },
+    {
+      label: labels.contact,
+      href: isHome ? "#contact" : `/${locale}/contact`,
+    },
+  ];
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -27,6 +74,27 @@ export function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  function switchLocale(next: Locale) {
+    const segments = pathname.split("/");
+    if (segments[1] === "en" || segments[1] === "jp") {
+      segments[1] = next;
+      router.push(segments.join("/") || `/${next}`);
+    } else {
+      router.push(`/${next}`);
+    }
+  }
+
+  function onNavClick(
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      scrollTo(href);
+      setOpen(false);
+    }
+  }
 
   return (
     <>
@@ -43,32 +111,30 @@ export function Navbar() {
               scrolled ? "px-4 py-2.5" : "px-5 py-3.5",
             ].join(" ")}
           >
-            <a
-              href="#hero"
-              className="flex items-center gap-2.5"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo("#hero");
-              }}
-            >
-              {/* Static G logotype — particle G is reserved for the 3D scene */}
+            <Link href={`/${locale}`} className="flex items-center gap-2.5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-g.svg" alt="" width={28} height={28} className="h-7 w-7" />
+              <img
+                src="/logo-g.svg"
+                alt=""
+                width={28}
+                height={28}
+                className="h-7 w-7"
+              />
               <span className="type-label tracking-[0.22em] text-fg">
                 GINVIFY
               </span>
-            </a>
+            </Link>
 
-            <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
-              {LINKS.map((link) => (
+            <nav
+              className="hidden items-center gap-6 lg:flex"
+              aria-label="Primary"
+            >
+              {links.map((link) => (
                 <a
-                  key={link.href}
+                  key={link.label}
                   href={link.href}
                   className="type-label text-fg-muted transition-colors hover:text-fg"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollTo(link.href);
-                  }}
+                  onClick={(e) => onNavClick(e, link.href)}
                 >
                   {link.label}
                 </a>
@@ -83,22 +149,32 @@ export function Navbar() {
               >
                 <button
                   type="button"
-                  className={lang === "EN" ? "text-fg" : "hover:text-fg"}
-                  onClick={() => setLang("EN")}
+                  className={locale === "en" ? "text-fg" : "hover:text-fg"}
+                  onClick={() => switchLocale("en")}
                 >
                   EN
                 </button>
                 <span className="mx-1.5 text-fg/30">|</span>
                 <button
                   type="button"
-                  className={lang === "JA" ? "text-fg" : "hover:text-fg"}
-                  onClick={() => setLang("JA")}
+                  className={locale === "jp" ? "text-fg" : "hover:text-fg"}
+                  onClick={() => switchLocale("jp")}
                 >
                   日本語
                 </button>
               </div>
-              <Button href="#contact" variant="primary" className="!py-2.5">
-                START A PROJECT
+              <Button
+                href={isHome ? "#contact" : `/${locale}/contact`}
+                variant="primary"
+                className="!py-2.5"
+                onClick={(e) => {
+                  if (isHome) {
+                    e.preventDefault();
+                    scrollTo("#contact");
+                  }
+                }}
+              >
+                {labels.cta}
               </Button>
             </div>
 
@@ -109,7 +185,7 @@ export function Navbar() {
               aria-controls="mobile-menu"
               onClick={() => setOpen((v) => !v)}
             >
-              {open ? "Close" : "Menu"}
+              {open ? labels.close : labels.menu}
             </button>
           </div>
         </Container>
@@ -117,9 +193,9 @@ export function Navbar() {
 
       <MobileMenu
         open={open}
-        links={LINKS}
-        lang={lang}
-        onLangChange={setLang}
+        links={links}
+        lang={locale === "en" ? "EN" : "JA"}
+        onLangChange={(lang) => switchLocale(lang === "EN" ? "en" : "jp")}
         onClose={() => setOpen(false)}
       />
     </>

@@ -35,7 +35,7 @@ export function MobileMenu({
         <nav className="flex flex-col gap-5" aria-label="Mobile">
           {links.map((link, i) => (
             <a
-              key={link.href}
+              key={link.href + link.label}
               href={link.href}
               className={[
                 "type-h2 text-fg transition-transform duration-500",
@@ -43,9 +43,13 @@ export function MobileMenu({
               ].join(" ")}
               style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
               onClick={(e) => {
-                e.preventDefault();
-                onClose();
-                scrollTo(link.href);
+                if (link.href.startsWith("#")) {
+                  e.preventDefault();
+                  onClose();
+                  scrollTo(link.href);
+                } else {
+                  onClose();
+                }
               }}
             >
               {link.label}
@@ -54,7 +58,11 @@ export function MobileMenu({
         </nav>
 
         <div className="flex flex-col gap-6">
-          <div className="type-label text-fg-muted" role="group" aria-label="Language">
+          <div
+            className="type-label text-fg-muted"
+            role="group"
+            aria-label="Language"
+          >
             <button
               type="button"
               className={lang === "EN" ? "text-fg" : ""}
@@ -71,11 +79,7 @@ export function MobileMenu({
               日本語
             </button>
           </div>
-          <Button
-            href="#contact"
-            onClick={onClose}
-            className="w-full"
-          >
+          <Button href="#contact" onClick={onClose} className="w-full">
             START A PROJECT
           </Button>
         </div>

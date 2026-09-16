@@ -1,0 +1,385 @@
+{
+  "meta": {
+    "title": "GINVIFY — Engineering Intelligence",
+    "description": "Webアプリケーション、AIシステム、オートメーション、SaaSプロダクトの設計と構築。",
+    "ogTitle": "GINVIFY — Engineering Intelligence",
+    "ogDescription": "アイデアからインテリジェントシステムへ。Web、AI、オートメーション、SaaSをベトナムからグローバルチームへ。"
+  },
+  "nav": {
+    "services": "サービス",
+    "ai": "AI",
+    "technology": "テクノロジー",
+    "experiments": "実験",
+    "about": "会社概要",
+    "contact": "お問い合わせ",
+    "cta": "プロジェクトを始める",
+    "menu": "メニュー",
+    "close": "閉じる"
+  },
+  "contact": {
+    "label": "09 — お問い合わせ",
+    "headline": [
+      "LET'S",
+      "BUILD",
+      "WHAT'S",
+      "NEXT."
+    ],
+    "cta": "プロジェクトを始める →",
+    "company": "GINVIFY",
+    "address": "ベトナム・ホーチミン市 Phú Thạnh、Lũy Bán Bích 501/2",
+    "phone": "+84 867 249 092",
+    "taxId": "0319695451",
+    "form": {
+      "name": "お名前",
+      "email": "メール",
+      "company": "会社名",
+      "projectType": "プロジェクト種別",
+      "message": "メッセージ",
+      "submit": "送信する",
+      "success": "メッセージを受け取りました。近日中にご連絡します。",
+      "projectTypes": [
+        "Webアプリケーション",
+        "AIエンジニアリング",
+        "オートメーション",
+        "SaaSプラットフォーム",
+        "ランディングページ",
+        "デジタルプロダクト",
+        "その他"
+      ]
+    }
+  },
+  "servicesIndex": {
+    "label": "サービス",
+    "title": "私たちがつくるもの。",
+    "body": "Web、AI、オートメーション、SaaS、ランディング、デジタルプロダクトまで、6つのケイパビリティ。"
+  },
+  "servicePages": {
+    "web-applications": {
+      "title": "Webアプリケーション",
+      "tagline": "パフォーマンスとスケーラビリティ、実ユーザーのためのモダンWebアプリ。",
+      "problem": "基盤がスケール・安全・速度を保てないと、プロダクトは止まります。",
+      "whatWeBuild": "UIからAPI、クラウドまで、本番を前提にしたエンドツーエンドのWebアプリケーション。",
+      "capabilities": [
+        "プロダクトUIとデザインシステム",
+        "APIとバックエンド",
+        "認証とマルチロール",
+        "パフォーマンスと観測性",
+        "クラウドデプロイとCI/CD"
+      ],
+      "technology": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "APIs",
+        "Cloud"
+      ],
+      "process": [
+        "Discover",
+        "Design",
+        "Engineer",
+        "Integrate",
+        "Deploy",
+        "Scale"
+      ],
+      "useCases": [
+        "カスタマーポータル",
+        "社内ツール",
+        "マーケットプレイス",
+        "コンテンツ駆動プロダクト"
+      ],
+      "faq": [
+        {
+          "q": "レガシーアプリの刷新は可能ですか？",
+          "a": "はい。出荷を止めずに段階的にモダナイズします。"
+        },
+        {
+          "q": "既存のデザインシステムに合わせられますか？",
+          "a": "既存の採用も、Ginvify水準の軽量システム構築も可能です。"
+        }
+      ],
+      "cta": "Webプロジェクトを始める"
+    },
+    "ai-engineering": {
+      "title": "AIエンジニアリング",
+      "tagline": "答えるだけのAIではない。行動するAI。",
+      "problem": "多くのAIデモはチャットで止まります。本番には検索・ツール・評価・安全な実行が必要です。",
+      "whatWeBuild": "RAG、エージェント、ビジョン、APIを実プロダクトのワークフローに組み込みます。",
+      "capabilities": [
+        "LLMアプリ設計",
+        "RAGパイプライン",
+        "AIエージェントとツール利用",
+        "コンピュータビジョン",
+        "評価とガードレール"
+      ],
+      "technology": [
+        "LLMs",
+        "RAG",
+        "AI Agents",
+        "Machine Learning",
+        "Computer Vision",
+        "AI APIs"
+      ],
+      "process": [
+        "Observe",
+        "Reason",
+        "Decide",
+        "Act",
+        "Learn"
+      ],
+      "useCases": [
+        "文書インテリジェンス",
+        "サポートコパイロット",
+        "運用エージェント",
+        "ビジョン支援ワークフロー"
+      ],
+      "faq": [
+        {
+          "q": "独自モデルの学習も行いますか？",
+          "a": "必要に応じて。多くの場合は基盤モデル＋検索／ファインチューニングが最適です。"
+        }
+      ],
+      "cta": "AIプロジェクトを始める",
+      "diagram": [
+        "DATA",
+        "RAG",
+        "LLM",
+        "AGENT",
+        "ACTION"
+      ]
+    },
+    "automation": {
+      "title": "オートメーション",
+      "tagline": "繰り返し作業をインテリジェントなシステムへ。",
+      "problem": "アプリ間の手作業はチームを消耗させ、壊れやすく測れないプロセスを生みます。",
+      "whatWeBuild": "アプリ・エージェント・データをつなぎ、確実なビジネスアクションへ導くワークフロー自動化。",
+      "capabilities": [
+        "ワークフローオーケストレーション",
+        "API連携",
+        "AI支援オートメーション",
+        "エージェンティックフロー",
+        "業務プロセス自動化"
+      ],
+      "technology": [
+        "APIs",
+        "Workflows",
+        "AI Agents",
+        "Integrations",
+        "CRM",
+        "Databases"
+      ],
+      "process": [
+        "Trigger",
+        "Workflow",
+        "AI",
+        "Integration",
+        "Result"
+      ],
+      "useCases": [
+        "リード振分",
+        "文書処理",
+        "運用チケット",
+        "財務突合"
+      ],
+      "faq": [
+        {
+          "q": "既存ツールとの接続は可能ですか？",
+          "a": "はい。既存スタックを前提に設計し、新しいシステムは価値が明確なときだけ導入します。"
+        }
+      ],
+      "cta": "ワークフローを自動化する",
+      "diagram": [
+        "TRIGGER",
+        "WORKFLOW",
+        "AI",
+        "INTEGRATION",
+        "RESULT"
+      ]
+    },
+    "saas": {
+      "title": "SaaSプラットフォーム",
+      "tagline": "スケーラブルなSaaSプロダクトの設計と実装。",
+      "problem": "テナンシー、課金、認証、データ分離を後付けすると、SaaSは静かに破綻します。",
+      "whatWeBuild": "成長に耐えるマルチテナント基盤とプロダクト・認証・課金・クラウドアーキテクチャ。",
+      "capabilities": [
+        "マルチテナント",
+        "認証",
+        "サブスクリプション",
+        "ダッシュボードと分析",
+        "クラウドアーキテクチャ"
+      ],
+      "technology": [
+        "Next.js",
+        "Auth",
+        "Postgres",
+        "APIs",
+        "Cloud",
+        "Billing"
+      ],
+      "process": [
+        "User",
+        "Auth",
+        "Application",
+        "API",
+        "Database",
+        "Cloud"
+      ],
+      "useCases": [
+        "B2Bプロダクト",
+        "分析SaaS",
+        "バーティカルSaaS MVP",
+        "社内プラットフォーム"
+      ],
+      "faq": [
+        {
+          "q": "MVPからスケールまで支援できますか？",
+          "a": "はい。まずクリーンなMVPを出荷し、成長に合わせてテナンシーと運用を強化します。"
+        }
+      ],
+      "cta": "SaaSを構築する",
+      "diagram": [
+        "USER",
+        "AUTH",
+        "APPLICATION",
+        "API",
+        "DATABASE",
+        "CLOUD"
+      ]
+    },
+    "landing-pages": {
+      "title": "ランディングページ",
+      "tagline": "ブランド・コンバージョン・モーションにフォーカスしたプレミアム体験。",
+      "problem": "平凡なページでは技術ブランドも、洗練されたバイヤーも動かせません。",
+      "whatWeBuild": "意図のあるモーションと明確なCTAを持つ、シネマティックで高速なランディング体験。",
+      "capabilities": [
+        "ブランドストーリー",
+        "コンバージョン設計",
+        "パフォーマンス予算",
+        "モーションシステム",
+        "スクロールナラティブ"
+      ],
+      "technology": [
+        "Next.js",
+        "GSAP",
+        "WebGL",
+        "Tailwind",
+        "Analytics"
+      ],
+      "process": [
+        "Brief",
+        "Narrative",
+        "Design",
+        "Motion",
+        "Build",
+        "Measure"
+      ],
+      "useCases": [
+        "プロダクトローンチ",
+        "コーポレートサイト",
+        "キャンペーン",
+        "ウェイトリスト"
+      ],
+      "faq": [
+        {
+          "q": "WebGLは使えますか？",
+          "a": "ストーリーに資するときのみ。モバイルと動きを抑えた環境向けに軽いフォールバックを用意します。"
+        }
+      ],
+      "cta": "ランディングを始める"
+    },
+    "digital-products": {
+      "title": "デジタルプロダクト",
+      "tagline": "アイデアからプロダクションへ。",
+      "problem": "発見・デザイン・エンジニアリングが分断されると、アイデアは止まります。",
+      "whatWeBuild": "ディスカバリーからMVP、実装、デプロイ、最適化までの一気通貫。",
+      "capabilities": [
+        "Discovery",
+        "UI/UX",
+        "Prototype",
+        "MVP",
+        "Engineering",
+        "Deployment",
+        "Optimization"
+      ],
+      "technology": [
+        "Product strategy",
+        "Design",
+        "React",
+        "APIs",
+        "Cloud"
+      ],
+      "process": [
+        "Discover",
+        "Design",
+        "Engineer",
+        "Integrate",
+        "Deploy",
+        "Scale"
+      ],
+      "useCases": [
+        "新規MVP",
+        "機能プラットフォーム",
+        "0→1ベンチャー",
+        "プロダクト再設計"
+      ],
+      "faq": [
+        {
+          "q": "実装だけですか、発見からも？",
+          "a": "両方可能です。ディスカバリーから入ることも、既存チームのエンジニアリングパートナーにもなれます。"
+        }
+      ],
+      "cta": "プロダクト開発を始める"
+    }
+  },
+  "pages": {
+    "technology": {
+      "label": "テクノロジー",
+      "title": "テクノロジ・コンステレーション。",
+      "body": "AI、Web、クラウド、データ、オートメーション — ロゴの羅列ではない、ひとつの対話的システム。"
+    },
+    "experiments": {
+      "label": "実験",
+      "title": "いまつくっているもの。",
+      "body": "コンセプト／実験／プロトタイプを明示。架空の事例紹介はしません。"
+    },
+    "about": {
+      "label": "会社概要",
+      "title": "GINVIFYは、ソフトウェア・人工知能・インテリジェントオートメーションに取り組むテクノロジー企業です。",
+      "body": "ベトナム発のエンジニアリング。グローバルチームのために。",
+      "secondary": "ベトナム発のエンジニアリング。グローバルチームのために。",
+      "location": "ベトナム・ホーチミン市"
+    },
+    "contact": {
+      "label": "お問い合わせ",
+      "title": "次をつくろう。"
+    }
+  },
+  "footer": {
+    "copyright": "© GINVIFY",
+    "location": "ベトナム・ホーチミン市"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "この道は地図にありません。",
+    "body": "お探しのページは存在しないか、静かに移動しました。",
+    "cta": "ホームへ戻る"
+  },
+  "hero": {
+    "headline": "Engineering Intelligence.",
+    "body": "Webアプリケーション、AIシステム、オートメーション、SaaSプロダクトの設計と構築。",
+    "ctaPrimary": "プロジェクトを始める",
+    "ctaSecondary": "サービスを見る"
+  },
+  "idea": {
+    "label": "01 — IDEA",
+    "headline": "すべてのプロダクトはアイデアから始まる。",
+    "word": "IDEA",
+    "body": "粒子の場はGから始まった同じシステム — アイデアがアーキテクチャになる前の空間です。"
+  },
+  "aboutHome": {
+    "label": "08 — 会社概要",
+    "headline": "GINVIFYは、ソフトウェア・人工知能・インテリジェントオートメーションに取り組むテクノロジー企業です。",
+    "secondary": "ベトナム発のエンジニアリング。グローバルチームのために。",
+    "location": "ベトナム・ホーチミン市"
+  }
+}
