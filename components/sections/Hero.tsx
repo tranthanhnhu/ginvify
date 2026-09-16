@@ -13,7 +13,7 @@ export function Hero() {
     <section
       id="hero"
       data-section="hero"
-      className="relative flex min-h-[100svh] items-end overflow-hidden pb-20 pt-32 sm:items-center sm:pb-0 sm:pt-0"
+      className="relative flex min-h-[100svh] items-end overflow-hidden pb-16 pt-28 sm:items-center sm:pb-0 sm:pt-0"
     >
       <Container className="relative z-10 w-full">
         <div className="max-w-3xl">
@@ -21,15 +21,15 @@ export function Hero() {
             {hero.headline}
           </BlurToSharp>
 
-          <Reveal as="p" className="mt-6 max-w-xl text-fg-muted" delay={0.35}>
+          <Reveal as="p" className="mt-5 max-w-xl text-base text-fg-muted sm:mt-6 sm:text-[length:var(--type-body)]" delay={0.35}>
             {hero.body}
           </Reveal>
 
-          <Stagger className="mt-10 flex flex-wrap gap-3" delay={0.5}>
-            <Button href="#contact" variant="primary">
+          <Stagger className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap" delay={0.5}>
+            <Button href="#contact" variant="primary" className="w-full sm:w-auto">
               {hero.ctaPrimary}
             </Button>
-            <Button href="#services" variant="secondary">
+            <Button href="#services" variant="secondary" className="w-full sm:w-auto">
               {hero.ctaSecondary}
             </Button>
           </Stagger>

@@ -22,7 +22,7 @@ export function Footer({ locale }: FooterProps) {
           <p className="mt-3 max-w-xs text-sm text-fg-muted">
             {footer.location}
           </p>
-          <p className="type-label mt-4 text-fg-muted/70">{footer.copyright}</p>
+          <p className="type-label mt-4 text-fg-muted">{footer.copyright}</p>
         </div>
 
         <nav

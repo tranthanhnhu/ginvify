@@ -119,6 +119,7 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
                 width={28}
                 height={28}
                 className="h-7 w-7"
+                aria-hidden
               />
               <span className="type-label tracking-[0.22em] text-fg">
                 GINVIFY

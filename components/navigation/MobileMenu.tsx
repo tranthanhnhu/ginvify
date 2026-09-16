@@ -23,6 +23,12 @@ export function MobileMenu({
   return (
     <div
       id="mobile-menu"
+      role="dialog"
+      aria-modal={open}
+      aria-label="Menu"
+      hidden={!open}
+      // Prefer inert when closed so focusable children are skipped
+      {...(!open ? { inert: true } : {})}
       className={[
         "fixed inset-0 z-40 bg-bg-0/95 backdrop-blur-xl transition-all duration-500 lg:hidden",
         open
@@ -37,6 +43,7 @@ export function MobileMenu({
             <a
               key={link.href + link.label}
               href={link.href}
+              tabIndex={open ? 0 : -1}
               className={[
                 "type-h2 text-fg transition-transform duration-500",
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
@@ -65,6 +72,7 @@ export function MobileMenu({
           >
             <button
               type="button"
+              tabIndex={open ? 0 : -1}
               className={lang === "EN" ? "text-fg" : ""}
               onClick={() => onLangChange("EN")}
             >
@@ -73,13 +81,19 @@ export function MobileMenu({
             <span className="mx-2 text-fg/30">|</span>
             <button
               type="button"
+              tabIndex={open ? 0 : -1}
               className={lang === "JA" ? "text-fg" : ""}
               onClick={() => onLangChange("JA")}
             >
               日本語
             </button>
           </div>
-          <Button href="#contact" onClick={onClose} className="w-full">
+          <Button
+            href="#contact"
+            tabIndex={open ? 0 : -1}
+            onClick={onClose}
+            className="w-full"
+          >
             START A PROJECT
           </Button>
         </div>

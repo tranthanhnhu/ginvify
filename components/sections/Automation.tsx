@@ -30,7 +30,7 @@ export function Automation() {
     <section
       id="automation"
       data-section="automation"
-      className="relative z-10 py-28 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
+      className="relative z-10 py-20 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
     >
       <Container className="relative">
         <SectionPanel className="max-w-4xl">
@@ -44,9 +44,9 @@ export function Automation() {
           </Reveal>
         </SectionPanel>
 
-        <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+        <ol className="mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4 xl:grid-cols-7">
           {PIPELINE.map((node, i) => (
-            <li key={node}>
+            <li key={node} className="w-[42%] shrink-0 snap-start sm:w-auto sm:shrink">
               <div
                 className={[
                   "border bg-bg-1/80 px-3 py-5 text-center backdrop-blur-sm transition-all duration-500",
