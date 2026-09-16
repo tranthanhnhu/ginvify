@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+  <!-- Geometric G mark for particle sampling and static nav usage -->
+  <path
+    id="g-mark"
+    d="M72 28
+       C64 18 52 12 40 12
+       C22 12 10 26 10 44
+       C10 66 24 88 50 88
+       C68 88 82 76 86 58
+       L86 48
+       L52 48
+       L52 58
+       L74 58
+       C70 68 62 74 50 74
+       C34 74 24 62 24 44
+       C24 30 32 22 40 22
+       C48 22 56 26 62 32
+       Z"
+    stroke="#B7FF3C"
+    stroke-width="2.5"
+    fill="none"
+  />
+</svg>
