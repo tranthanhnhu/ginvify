@@ -113,18 +113,21 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
         <Container>
           <div
             className={[
-              "flex items-center justify-between gap-4 border border-white/8 bg-bg-0/70 backdrop-blur-md transition-all duration-500",
+              "flex items-center justify-between gap-3 border transition-all duration-500 sm:gap-4",
+              open
+                ? "border-transparent bg-transparent backdrop-blur-none"
+                : "border-white/8 bg-bg-0/70 backdrop-blur-md",
               scrolled ? "px-4 py-2.5" : "px-5 py-3.5",
             ].join(" ")}
           >
-            <Link href={`/${locale}`} className="flex items-center gap-2.5">
+            <Link href={`/${locale}`} className="flex min-w-0 items-center gap-2.5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/logo-g.svg"
                 alt=""
                 width={28}
                 height={28}
-                className="h-7 w-7"
+                className="h-7 w-7 shrink-0"
                 aria-hidden
               />
               <span className="type-label tracking-[0.22em] text-fg">
@@ -185,16 +188,45 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
               </Button>
             </div>
 
-            <button
-              ref={menuButtonRef}
-              type="button"
-              className="type-label flex min-h-11 min-w-11 items-center justify-center text-fg lg:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              onClick={() => setOpen((v) => !v)}
-            >
-              {open ? labels.close : labels.menu}
-            </button>
+            <div className="flex shrink-0 items-center gap-1 lg:hidden">
+              <div
+                className="type-label flex items-center gap-0.5 text-fg-muted"
+                role="group"
+                aria-label="Language"
+              >
+                <button
+                  type="button"
+                  className={`flex h-10 min-w-[2.25rem] items-center justify-center px-1.5 ${
+                    locale === "en" ? "text-fg" : "hover:text-fg"
+                  }`}
+                  onClick={() => switchLocale("en")}
+                >
+                  EN
+                </button>
+                <span className="text-fg/30" aria-hidden>
+                  |
+                </span>
+                <button
+                  type="button"
+                  className={`flex h-10 min-w-[2.25rem] items-center justify-center px-1.5 ${
+                    locale === "jp" ? "text-fg" : "hover:text-fg"
+                  }`}
+                  onClick={() => switchLocale("jp")}
+                >
+                  JA
+                </button>
+              </div>
+              <button
+                ref={menuButtonRef}
+                type="button"
+                className="type-label flex h-10 min-w-[2.75rem] items-center justify-center px-2 text-fg"
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                onClick={() => setOpen((v) => !v)}
+              >
+                {open ? labels.close : labels.menu}
+              </button>
+            </div>
           </div>
         </Container>
       </header>
@@ -202,10 +234,8 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
       <MobileMenu
         open={open}
         links={links}
-        lang={locale === "en" ? "EN" : "JA"}
         ctaLabel={labels.cta}
         ctaHref={isHome ? "#contact" : `/${locale}/contact`}
-        onLangChange={(lang) => switchLocale(lang === "EN" ? "en" : "jp")}
         onClose={closeMenu}
       />
     </>

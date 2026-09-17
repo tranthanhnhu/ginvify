@@ -8,8 +8,6 @@ import { Reveal } from "@/components/animation/Reveal";
 import { GinvifyCat } from "@/components/mascot/GinvifyCat";
 import { useDictionary } from "@/components/i18n/DictionaryProvider";
 
-type Label = "CONCEPT" | "EXPERIMENT" | "PROTOTYPE";
-
 type ExperimentsProps = {
   hideIntro?: boolean;
 };
@@ -20,7 +18,6 @@ export function Experiments({ hideIntro = false }: ExperimentsProps) {
 
   const visible = useMemo(() => {
     if (filter === "ALL") return experimentsHome.items;
-    if (filter === "ARCHIVE") return [];
     return experimentsHome.items.filter((item) => item.label === filter);
   }, [filter, experimentsHome.items]);
 
@@ -32,21 +29,22 @@ export function Experiments({ hideIntro = false }: ExperimentsProps) {
     >
       <Container className="relative">
         {!hideIntro && (
-          <SectionPanel className="max-w-3xl">
-            <p className="type-label text-fg-muted">{experimentsHome.label}</p>
+          <SectionPanel variant="ghost" padded={false} className="max-w-3xl">
+            <p className="type-label text-cyan">{experimentsHome.label}</p>
             <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
               {experimentsHome.title}
             </BlurToSharp>
-            <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
+            <Reveal as="p" className="mt-6 max-w-xl text-fg/75">
               {experimentsHome.body}
             </Reveal>
           </SectionPanel>
         )}
 
         <div
-          className={["flex flex-wrap gap-2", hideIntro ? "mt-0" : "mt-10"].join(
-            " ",
-          )}
+          className={[
+            "-mx-1 flex gap-2 overflow-x-auto snap-x snap-mandatory px-1 pb-1",
+            hideIntro ? "mt-0" : "mt-10",
+          ].join(" ")}
           role="group"
           aria-label="Filter experiments"
         >
@@ -55,7 +53,7 @@ export function Experiments({ hideIntro = false }: ExperimentsProps) {
               key={f}
               type="button"
               className={[
-                "type-label min-h-11 border px-3 py-2 transition-colors",
+                "type-label min-h-11 shrink-0 snap-start border px-3 py-2 transition-colors",
                 filter === f
                   ? "border-lime text-lime"
                   : "border-white/15 text-fg-muted hover:text-fg",

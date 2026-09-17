@@ -2,7 +2,7 @@ export const colors = {
   bg0: "#050607",
   bg1: "#0A0D10",
   bg2: "#11161A",
-  lime: "#A3E635",
+  lime: "#A8CF4A",
   cyan: "#5CE1E6",
   fg: "#F2F4F5",
   fgMuted: "#9AA3A8",
@@ -33,5 +33,5 @@ export const spacing = {
 export const particleCounts = {
   desktop: 640,
   tablet: 320,
-  mobile: 160,
+  mobile: 220,
 } as const;

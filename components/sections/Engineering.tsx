@@ -22,50 +22,62 @@ export function Engineering() {
     <section
       id="engineering"
       data-section="engineering"
-      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
+      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/45"
     >
       <Container className="relative">
-        <SectionPanel className="max-w-4xl">
+        <SectionPanel variant="ghost" padded={false} className="max-w-3xl">
           <p className="type-label text-lime">{engineeringHome.label}</p>
           <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
             {engineeringHome.title}
           </BlurToSharp>
-          <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
+          <Reveal as="p" className="mt-6 max-w-xl text-fg/75">
             {engineeringHome.body}
           </Reveal>
         </SectionPanel>
 
-        <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {engineeringHome.steps.map((step, i) => (
-            <li key={step.title}>
-              <div
+        <ol className="relative mt-12 max-w-3xl space-y-0">
+          <div
+            className="pointer-events-none absolute bottom-2 left-[0.55rem] top-2 w-px bg-gradient-to-b from-lime/45 via-white/12 to-transparent"
+            aria-hidden
+          />
+          {engineeringHome.steps.map((step, i) => {
+            const on = activeIndex >= i;
+            const current = activeIndex === i;
+            return (
+              <li
+                key={step.title}
                 className={[
-                  "h-full border bg-bg-1/80 px-4 py-6 backdrop-blur-sm transition-colors duration-500",
-                  activeIndex >= i
-                    ? "border-lime/50 text-fg"
-                    : "border-white/12 text-fg-muted",
+                  "relative grid grid-cols-[1.5rem_1fr] gap-4 py-5 transition-opacity duration-500 sm:gap-6",
+                  on ? "opacity-100" : "opacity-40",
                 ].join(" ")}
               >
-                <span className="type-label text-[0.65rem] opacity-50">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-2 text-sm font-medium tracking-[0.1em]">
-                  {step.title}
-                </p>
-                <p className="mt-2 text-xs leading-relaxed text-fg-muted">
-                  {step.body}
-                </p>
-              </div>
-            </li>
-          ))}
+                <span
+                  className={[
+                    "mt-1.5 h-2.5 w-2.5 rounded-full",
+                    current
+                      ? "bg-lime shadow-[0_0_12px_rgba(183,255,60,0.45)]"
+                      : on
+                        ? "bg-lime/55"
+                        : "bg-white/25",
+                  ].join(" ")}
+                  aria-hidden
+                />
+                <div>
+                  <p className="type-label text-lime/80">
+                    {String(i + 1).padStart(2, "0")}
+                    <span className="mx-2 text-fg/20">—</span>
+                    <span className={current ? "text-fg" : "text-fg-muted"}>
+                      {step.title}
+                    </span>
+                  </p>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-fg-muted sm:text-base">
+                    {step.body}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
         </ol>
-
-        <pre
-          className="mt-12 overflow-x-auto border border-white/12 bg-bg-1/80 p-5 font-mono text-[0.7rem] leading-relaxed text-fg-muted backdrop-blur-sm"
-          aria-hidden
-        >
-          {engineeringHome.codeSnippet}
-        </pre>
       </Container>
     </section>
   );

@@ -374,7 +374,9 @@
   },
   "footer": {
     "copyright": "© GINVIFY",
-    "location": "ベトナム・ホーチミン市"
+    "location": "ベトナム・ホーチミン市",
+    "address": "ベトナム・ホーチミン市 Phú Thạnh\nLũy Bán Bích 501/2",
+    "phone": "+84 867 249 092"
   },
   "notFound": {
     "code": "404",
@@ -690,8 +692,7 @@
       "ALL",
       "CONCEPT",
       "EXPERIMENT",
-      "PROTOTYPE",
-      "ARCHIVE"
+      "PROTOTYPE"
     ],
     "items": [
       {

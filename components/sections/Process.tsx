@@ -13,37 +13,34 @@ export function Process() {
     <section
       id="process"
       data-section="process"
-      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
+      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/45"
     >
       <Container className="relative">
-        <SectionPanel className="max-w-3xl">
+        <SectionPanel variant="ghost" padded={false} className="max-w-3xl">
           <p className="type-label text-cyan">{processHome.label}</p>
           <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
             {processHome.title}
           </BlurToSharp>
-          <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
+          <Reveal as="p" className="mt-6 max-w-xl text-fg/75">
             {processHome.body}
           </Reveal>
         </SectionPanel>
 
-        <ol className="mt-10 space-y-3 md:space-y-0 md:border-l md:border-white/15 md:pl-0">
+        <ol className="relative mt-12 max-w-3xl space-y-0 md:border-l md:border-white/12 md:pl-10">
           {processHome.steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="relative md:grid md:grid-cols-[7rem_1fr] md:gap-8 md:border-l-0 md:py-5"
-            >
-              <div className="hidden md:absolute md:-left-[5px] md:top-7 md:block md:h-2.5 md:w-2.5 md:rounded-full md:bg-lime" />
-              <p className="type-label text-lime md:pt-1">
-                {String(i + 1).padStart(2, "0")} — {step.title}
+            <li key={step.title} className="relative py-5 md:py-6">
+              <div
+                className="absolute -left-[2.85rem] top-7 hidden h-2.5 w-2.5 rounded-full bg-lime md:block"
+                aria-hidden
+              />
+              <p className="type-label text-lime">
+                {String(i + 1).padStart(2, "0")}
+                <span className="mx-2 text-fg/25">—</span>
+                {step.title}
               </p>
-              <SectionPanel padded className="mt-2 md:mt-0">
-                <h3 className="text-base font-medium text-fg md:hidden">
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-fg-muted md:text-base">
-                  {step.body}
-                </p>
-              </SectionPanel>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-fg-muted md:text-base">
+                {step.body}
+              </p>
             </li>
           ))}
         </ol>

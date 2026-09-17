@@ -4,16 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { SectionPanel } from "@/components/ui/SectionPanel";
+import { Button } from "@/components/ui/Button";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
 import { useDictionary } from "@/components/i18n/DictionaryProvider";
 import { setScrollStore } from "@/lib/scroll/useScrollProgress";
+import { scrollTo } from "@/lib/scroll/lenis";
 import type { Locale } from "@/lib/i18n/config";
 
 export function Services() {
-  const { servicesHome } = useDictionary();
+  const { servicesHome, nav } = useDictionary();
   const pathname = usePathname();
   const locale = (pathname?.split("/")[1] === "jp" ? "jp" : "en") as Locale;
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   return (
     <section
@@ -26,51 +29,60 @@ export function Services() {
         <BlurToSharp as="h2" className="type-h1 mt-5 max-w-3xl text-fg">
           {servicesHome.title}
         </BlurToSharp>
-        <Reveal as="p" className="mt-5 max-w-xl text-fg-muted">
+        <Reveal as="p" className="mt-5 max-w-xl text-fg/75">
           {servicesHome.body}
         </Reveal>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
           {servicesHome.items.map((service, index) => (
             <li key={service.id}>
-              <SectionPanel
-                as="article"
-                className="group h-full transition-colors duration-300 hover:border-lime/45 hover:bg-bg-2/85 focus-within:border-lime/45"
+              <Link
+                href={`/${locale}/services/${service.slug}`}
+                className="block h-full focus-visible:outline-none"
                 onPointerEnter={() => setScrollStore({ servicesHover: index })}
                 onPointerLeave={() => setScrollStore({ servicesHover: null })}
                 onFocus={() => setScrollStore({ servicesHover: index })}
                 onBlur={() => setScrollStore({ servicesHover: null })}
-                tabIndex={0}
               >
-                <p className="type-label text-fg-muted transition-colors group-hover:text-lime group-focus-within:text-lime">
-                  {service.id}
-                </p>
-                <h3 className="mt-4 text-lg font-medium tracking-tight text-fg">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-                  {service.body}
-                </p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {service.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="border border-white/15 bg-bg-0/40 px-2 py-1 text-[0.65rem] uppercase tracking-[0.12em] text-fg-muted"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/${locale}/services/${service.slug}`}
-                  className="type-label mt-6 inline-flex text-cyan transition-colors hover:text-lime"
+                <SectionPanel
+                  as="article"
+                  className="group h-full transition-colors duration-300 hover:border-lime/45 hover:bg-bg-2/85"
                 >
-                  {servicesHome.viewService} →
-                </Link>
-              </SectionPanel>
+                  <p className="type-label text-fg-muted transition-colors group-hover:text-lime">
+                    {service.id}
+                  </p>
+                  <h3 className="mt-4 text-lg font-medium tracking-tight text-fg">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                    {service.body}
+                  </p>
+                  <p className="mt-5 text-xs tracking-[0.08em] text-fg-muted/80">
+                    {service.tags.slice(0, 3).join(" · ")}
+                  </p>
+                  <span className="type-label mt-6 inline-flex text-cyan transition-colors group-hover:text-lime">
+                    {servicesHome.viewService} →
+                  </span>
+                </SectionPanel>
+              </Link>
             </li>
           ))}
         </ul>
+
+        <div className="mt-12 md:mt-16">
+          <Button
+            href={isHome ? "#contact" : `/${locale}/contact`}
+            variant="primary"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                scrollTo("#contact");
+              }
+            }}
+          >
+            {nav.cta}
+          </Button>
+        </div>
       </Container>
     </section>
   );

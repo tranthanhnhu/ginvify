@@ -64,7 +64,7 @@ function fallbackGPoints(count: number) {
 export function sampleSvgPath(
   count: number,
   path = G_PATH,
-  scale = 0.045,
+  scale = 0.032,
 ): Float32Array {
   const dense = approximatePathPoints(path, Math.max(count * 2, 200));
   const positions = new Float32Array(count * 3);
@@ -81,8 +81,8 @@ export function sampleSvgPath(
 
   for (let i = 0; i < count; i++) {
     const src = dense[Math.floor((i / count) * dense.length)]!;
-    const jitter = (hash(i) - 0.5) * 0.08;
-    const zJitter = (hash(i + 99) - 0.5) * 0.35;
+    const jitter = (hash(i) - 0.5) * 0.04;
+    const zJitter = (hash(i + 99) - 0.5) * 0.08;
     positions[i * 3] = (src.x - cx) * scale + jitter;
     positions[i * 3 + 1] = -(src.y - cy) * scale + jitter * 0.5;
     positions[i * 3 + 2] = zJitter;

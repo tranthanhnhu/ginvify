@@ -4,7 +4,7 @@
   --color-bg-0: #050607;
   --color-bg-1: #0a0d10;
   --color-bg-2: #11161a;
-  --color-lime: #a3e635;
+  --color-lime: #a8cf4a;
   --color-cyan: #5ce1e6;
   --color-fg: #f2f4f5;
   --color-fg-muted: #9aa3a8;
@@ -29,7 +29,7 @@
   --bg-0: #050607;
   --bg-1: #0a0d10;
   --bg-2: #11161a;
-  --lime: #a3e635;
+  --lime: #a8cf4a;
   --cyan: #5ce1e6;
   --fg: #f2f4f5;
   --fg-muted: #9aa3a8;
@@ -115,7 +115,7 @@ button {
   font-size: var(--type-display);
   font-weight: 600;
   letter-spacing: -0.035em;
-  line-height: 0.95;
+  line-height: 1.02;
 }
 
 .type-h1 {

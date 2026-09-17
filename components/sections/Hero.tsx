@@ -13,25 +13,31 @@ export function Hero() {
     <section
       id="hero"
       data-section="hero"
-      className="relative flex min-h-[100svh] items-end overflow-hidden pb-[max(4rem,env(safe-area-inset-bottom))] pt-[calc(var(--nav-height)+1.5rem)] sm:items-center sm:pb-0 sm:pt-0"
+      className="relative flex min-h-[100svh] items-end overflow-hidden pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-[calc(var(--nav-height)+1.25rem)] sm:items-center sm:pb-0 sm:pt-0"
     >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-0 via-bg-0/40 to-transparent sm:hidden" />
+      {/* Mobile: even bottom scrim so centered copy stays readable */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-0 via-bg-0/50 to-bg-0/20 sm:hidden" />
+      {/* Desktop left/text scrim — G stays bright on the right */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[min(72%,42rem)] bg-gradient-to-r from-bg-0/85 via-bg-0/40 to-transparent sm:block" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-bg-0/70 to-transparent sm:block" />
+
       <Container className="relative z-10 w-full">
-        <div className="max-w-3xl">
+        {/* Mobile: centered stack. Desktop: left brand column. */}
+        <div className="mx-auto w-full max-w-md text-center sm:mx-0 sm:max-w-3xl sm:text-left">
           <BlurToSharp as="h1" className="type-display text-fg" delay={0.15}>
             {hero.headline}
           </BlurToSharp>
 
           <Reveal
             as="p"
-            className="mt-5 max-w-xl text-base text-fg-muted sm:mt-6 sm:text-[length:var(--type-body)]"
+            className="mx-auto mt-5 max-w-md text-base text-fg/80 sm:mx-0 sm:mt-6 sm:max-w-xl sm:text-[length:var(--type-body)]"
             delay={0.35}
           >
             {hero.body}
           </Reveal>
           <Reveal
             as="p"
-            className="mt-3 max-w-lg text-sm text-fg-muted/90"
+            className="mx-auto mt-3 max-w-sm text-sm text-fg/65 sm:mx-0 sm:max-w-lg"
             delay={0.42}
           >
             {hero.supporting}

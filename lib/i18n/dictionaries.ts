@@ -146,6 +146,8 @@ export type Dictionary = {
   footer: {
     copyright: string;
     location: string;
+    address: string;
+    phone: string;
   };
   notFound: {
     code: string;

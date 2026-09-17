@@ -6,7 +6,6 @@ import { SectionPanel } from "@/components/ui/SectionPanel";
 import { Button } from "@/components/ui/Button";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { GinvifyCat } from "@/components/mascot/GinvifyCat";
-import { scrollTo } from "@/lib/scroll/lenis";
 
 export type ContactCopy = {
   label: string;
@@ -47,7 +46,8 @@ const DEFAULT_COPY: ContactCopy = {
     submit: "Send message",
     hint: "A short brief is enough — goals, timeline and links help us respond faster.",
     success: "Message received. We'll be in touch soon.",
-    successDetail: "We usually reply with clarifying questions or a proposed next step.",
+    successDetail:
+      "We usually reply with clarifying questions or a proposed next step.",
     projectTypes: [
       "Web Application",
       "AI Engineering",
@@ -95,31 +95,21 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
           ))}
         </BlurToSharp>
 
-        <Button
-          href="#contact-form"
-          variant="primary"
-          className="mt-10"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollTo("#contact-form", -80);
-          }}
-        >
-          {copy.cta}
-        </Button>
-
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
-          <SectionPanel className="space-y-4 text-fg-muted">
+        <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:mt-16">
+          <SectionPanel variant="ghost" padded={false} className="space-y-4 text-fg-muted lg:pt-2">
             <p className="type-label text-fg">{copy.company}</p>
-            <p>{copy.address}</p>
+            <p className="max-w-sm text-sm leading-relaxed text-fg/80">
+              {copy.address}
+            </p>
             <p>
               <a
                 href={`tel:${copy.phone.replace(/\s/g, "")}`}
-                className="hover:text-cyan"
+                className="text-fg transition-colors hover:text-cyan"
               >
                 {copy.phone}
               </a>
             </p>
-            <p className="type-label text-fg-muted">Tax ID: {copy.taxId}</p>
+            <p className="type-label text-fg-muted/70">Tax ID: {copy.taxId}</p>
           </SectionPanel>
 
           <SectionPanel id="contact-form">
@@ -146,7 +136,7 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
                   </span>
                   <select
                     name="projectType"
-                    className="mt-2 w-full border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan"
+                    className="mt-2 w-full border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan focus-visible:ring-1 focus-visible:ring-cyan/40"
                     defaultValue={copy.form.projectTypes[0]}
                   >
                     {copy.form.projectTypes.map((t) => (
@@ -164,7 +154,7 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
                     name="message"
                     rows={4}
                     required
-                    className="mt-2 w-full resize-y border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan"
+                    className="mt-2 w-full resize-y border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan focus-visible:ring-1 focus-visible:ring-cyan/40"
                   />
                 </label>
                 <Button type="submit" variant="primary">
@@ -197,7 +187,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-2 w-full border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan"
+        className="mt-2 w-full border border-white/15 bg-bg-0/60 px-3 py-3 text-fg outline-none focus:border-cyan focus-visible:ring-1 focus-visible:ring-cyan/40"
       />
     </label>
   );

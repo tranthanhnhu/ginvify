@@ -374,7 +374,9 @@
   },
   "footer": {
     "copyright": "© GINVIFY",
-    "location": "Ho Chi Minh City, Vietnam"
+    "location": "Ho Chi Minh City, Vietnam",
+    "address": "501/2 Lũy Bán Bích, Phú Thạnh\nHo Chi Minh City, Vietnam",
+    "phone": "+84 867 249 092"
   },
   "notFound": {
     "code": "404",
@@ -683,8 +685,7 @@
       "ALL",
       "CONCEPT",
       "EXPERIMENT",
-      "PROTOTYPE",
-      "ARCHIVE"
+      "PROTOTYPE"
     ],
     "items": [
       {

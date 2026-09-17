@@ -9,20 +9,16 @@ type Link = { label: string; href: string };
 type MobileMenuProps = {
   open: boolean;
   links: readonly Link[];
-  lang: "EN" | "JA";
   ctaLabel: string;
   ctaHref: string;
-  onLangChange: (lang: "EN" | "JA") => void;
   onClose: () => void;
 };
 
 export function MobileMenu({
   open,
   links,
-  lang,
   ctaLabel,
   ctaHref,
-  onLangChange,
   onClose,
 }: MobileMenuProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -80,47 +76,22 @@ export function MobileMenu({
           ))}
         </nav>
 
-        <div className="flex flex-col gap-6">
-          <div
-            className="type-label flex items-center gap-1 text-fg-muted"
-            role="group"
-            aria-label="Language"
-          >
-            <button
-              type="button"
-              tabIndex={open ? 0 : -1}
-              className={`min-h-11 min-w-11 px-2 ${lang === "EN" ? "text-fg" : ""}`}
-              onClick={() => onLangChange("EN")}
-            >
-              EN
-            </button>
-            <span className="text-fg/30">|</span>
-            <button
-              type="button"
-              tabIndex={open ? 0 : -1}
-              className={`min-h-11 min-w-11 px-2 ${lang === "JA" ? "text-fg" : ""}`}
-              onClick={() => onLangChange("JA")}
-            >
-              日本語
-            </button>
-          </div>
-          <Button
-            href={ctaHref}
-            tabIndex={open ? 0 : -1}
-            onClick={(e) => {
-              if (ctaHref.startsWith("#")) {
-                e.preventDefault();
-                onClose();
-                scrollTo(ctaHref);
-              } else {
-                onClose();
-              }
-            }}
-            className="w-full"
-          >
-            {ctaLabel}
-          </Button>
-        </div>
+        <Button
+          href={ctaHref}
+          tabIndex={open ? 0 : -1}
+          onClick={(e) => {
+            if (ctaHref.startsWith("#")) {
+              e.preventDefault();
+              onClose();
+              scrollTo(ctaHref);
+            } else {
+              onClose();
+            }
+          }}
+          className="w-full"
+        >
+          {ctaLabel}
+        </Button>
       </div>
     </div>
   );

@@ -22,7 +22,8 @@ export type IntelligenceCoreProps = {
   isMobile?: boolean;
   isTablet?: boolean;
   reducedMotion?: boolean;
-  paused?: boolean;
+  /** True when tab/main hidden — hide GPU work entirely */
+  suspend?: boolean;
 };
 
 export function IntelligenceCore({
@@ -35,7 +36,7 @@ export function IntelligenceCore({
   isMobile = false,
   isTablet = false,
   reducedMotion = false,
-  paused = false,
+  suspend = false,
 }: IntelligenceCoreProps) {
   const positionsRef = useRef<Float32Array | null>(null);
   const count = isMobile
@@ -45,15 +46,11 @@ export function IntelligenceCore({
       : particleCounts.desktop;
 
   const morphState = useMemo(() => {
-    // Scroll-scrubbed: Hero top = G; scroll down dissolves; scroll up restores G
     if (activeSection === "hero") {
       if (reducedMotion) return "g" as const;
-      if (scrollProgress < 0.25) return "g" as const;
-      if (scrollProgress < 0.55) return "cluster" as const;
+      if (scrollProgress < 0.4) return "g" as const;
+      if (scrollProgress < 0.65) return "cluster" as const;
       return "network" as const;
-    }
-    if (reducedMotion) {
-      return morphForSection(activeSection);
     }
     return morphForSection(activeSection);
   }, [activeSection, reducedMotion, scrollProgress]);
@@ -92,7 +89,7 @@ export function IntelligenceCore({
   ]);
 
   const accent = useMemo(() => {
-    if (activeSection === "hero" && scrollProgress < 0.25) return colors.lime;
+    if (activeSection === "hero" && scrollProgress < 0.4) return colors.lime;
     if (activeSection === "ai") return colors.cyan;
     if (activeSection === "automation") return colors.cyan;
     if (activeSection === "engineering") return colors.lime;
@@ -110,15 +107,21 @@ export function IntelligenceCore({
   }, [activeSection, ideaProgress, scrollProgress, servicesHover, techGroup]);
 
   const intensity = useMemo(() => {
-    if (activeSection === "hero" && scrollProgress < 0.25) return 1;
+    if (activeSection === "hero" && scrollProgress < 0.4) return 1;
     if (activeSection === "experiments") return 0.35;
     if (activeSection === "about") return 0.45;
-    if (activeSection === "contact") return 0.95;
+    if (activeSection === "contact") return 1;
     if (activeSection === "services" && servicesHover !== null) return 1;
     return 0.75 + sectionProgress * 0.2;
   }, [activeSection, scrollProgress, sectionProgress, servicesHover]);
 
-  if (paused) return null;
+  if (suspend) return null;
+
+  // Mobile: centered medium G above copy. Desktop: larger mark on the right.
+  const showG = morphState === "g";
+  const gOffsetX = showG ? (isMobile ? 0 : 1.05) : 0;
+  const gOffsetY = showG ? (isMobile ? 0.65 : 0.08) : 0;
+  const gScale = showG ? (isMobile ? 1.15 : 0.78) : 1;
 
   return (
     <group>
@@ -126,36 +129,38 @@ export function IntelligenceCore({
       <pointLight position={[3, 2, 4]} intensity={0.8} color={colors.cyan} />
       <pointLight position={[-3, -1, -2]} intensity={0.45} color={colors.lime} />
 
-      <GLogoParticles
-        count={count}
-        morphState={morphState}
-        morphBlend={0.85 + sectionProgress * 0.15}
-        reducedMotion={reducedMotion}
-        scrollProgress={Math.max(scrollProgress, sectionProgress)}
-        intensity={intensity}
-        accent={accent}
-        onPositions={(pos) => {
-          positionsRef.current = pos;
-        }}
-      />
-
-      <NodeNetwork
-        positionsRef={positionsRef}
-        count={count}
-        density={connectionDensity}
-        visible={morphState !== "g"}
-        accent={accent}
-      />
-
-      {!isMobile &&
-        !reducedMotion &&
-        activeSection !== "experiments" &&
-        morphState !== "g" && (
-        <DataStream
-          count={activeSection === "automation" ? 4 : 3}
+      <group position={[gOffsetX, gOffsetY, 0]} scale={gScale}>
+        <GLogoParticles
+          count={count}
+          morphState={morphState}
+          morphBlend={0.85 + sectionProgress * 0.15}
           reducedMotion={reducedMotion}
+          scrollProgress={Math.max(scrollProgress, sectionProgress)}
+          intensity={intensity}
+          accent={accent}
+          onPositions={(pos) => {
+            positionsRef.current = pos;
+          }}
         />
-      )}
+
+        <NodeNetwork
+          positionsRef={positionsRef}
+          count={count}
+          density={connectionDensity}
+          visible={morphState !== "g"}
+          accent={accent}
+        />
+
+        {!isMobile &&
+          !reducedMotion &&
+          activeSection !== "experiments" &&
+          morphState !== "g" && (
+            <DataStream
+              count={activeSection === "automation" ? 4 : 3}
+              reducedMotion={reducedMotion}
+            />
+          )}
+      </group>
 
       <CameraController
         scrollProgress={Math.max(
@@ -165,6 +170,7 @@ export function IntelligenceCore({
         )}
         reducedMotion={reducedMotion}
         isMobile={isMobile}
+        lockOrbit={morphState === "g"}
       />
     </group>
   );

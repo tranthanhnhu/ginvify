@@ -130,7 +130,7 @@ export function ScrollStory({ children }: { children: ReactNode }) {
     <div className="relative isolate">
       <div className="pointer-events-none fixed inset-0 z-0 h-[100svh] w-full">
         <SceneCanvas />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-0/50 via-bg-0/15 to-bg-0/70" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-0/45 via-bg-0/10 to-bg-0/65" />
       </div>
       <div className="relative z-10">{children}</div>
     </div>

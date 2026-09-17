@@ -13,12 +13,12 @@ export function Idea() {
     <section
       id="idea"
       data-section="idea"
-      className="relative z-10 flex min-h-[100svh] items-center py-20 md:py-24"
+      className="relative z-10 flex min-h-[100svh] items-center py-section"
     >
       <div className="pointer-events-none absolute inset-0 bg-bg-0/45" />
 
       <Container className="relative">
-        <SectionPanel className="max-w-3xl">
+        <SectionPanel variant="intro" className="max-w-3xl">
           <p className="type-label text-cyan">{idea.label}</p>
 
           <BlurToSharp as="h2" className="type-h1 mt-6 text-fg">
@@ -33,7 +33,7 @@ export function Idea() {
             {idea.word}
           </Reveal>
 
-          <p className="mt-8 max-w-md text-fg-muted">{idea.body}</p>
+          <p className="mt-8 max-w-md text-fg/75">{idea.body}</p>
 
           <ul className="mt-8 space-y-3 border-t border-white/10 pt-6">
             {idea.bullets.map((bullet) => (

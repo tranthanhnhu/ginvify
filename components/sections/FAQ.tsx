@@ -1,16 +1,23 @@
 "use client";
 
 import { useId, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { SectionPanel } from "@/components/ui/SectionPanel";
+import { Button } from "@/components/ui/Button";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
 import { useDictionary } from "@/components/i18n/DictionaryProvider";
+import { scrollTo } from "@/lib/scroll/lenis";
+import type { Locale } from "@/lib/i18n/config";
 
 export function FAQ() {
-  const { faqHome } = useDictionary();
+  const { faqHome, nav } = useDictionary();
   const baseId = useId();
   const [open, setOpen] = useState<number | null>(0);
+  const pathname = usePathname();
+  const locale = (pathname?.split("/")[1] === "jp" ? "jp" : "en") as Locale;
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   return (
     <section
@@ -19,12 +26,12 @@ export function FAQ() {
       className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/55"
     >
       <Container className="relative">
-        <SectionPanel className="max-w-3xl">
+        <SectionPanel variant="ghost" padded={false} className="max-w-3xl">
           <p className="type-label text-fg-muted">{faqHome.label}</p>
           <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
             {faqHome.title}
           </BlurToSharp>
-          <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
+          <Reveal as="p" className="mt-6 max-w-xl text-fg/75">
             {faqHome.body}
           </Reveal>
         </SectionPanel>
@@ -66,6 +73,21 @@ export function FAQ() {
             );
           })}
         </ul>
+
+        <div className="mt-12">
+          <Button
+            href={isHome ? "#contact" : `/${locale}/contact`}
+            variant="primary"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                scrollTo("#contact");
+              }
+            }}
+          >
+            {nav.cta}
+          </Button>
+        </div>
       </Container>
     </section>
   );
