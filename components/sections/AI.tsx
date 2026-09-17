@@ -4,53 +4,52 @@ import { Container } from "@/components/ui/Container";
 import { SectionPanel } from "@/components/ui/SectionPanel";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
+import { useDictionary } from "@/components/i18n/DictionaryProvider";
 import { useScrollProgress } from "@/lib/scroll/useScrollProgress";
 
-const FLOW = ["OBSERVE", "REASON", "DECIDE", "ACT", "LEARN"] as const;
-
 export function AI() {
+  const { aiHome } = useDictionary();
   const { sectionProgress, activeSection } = useScrollProgress();
   const activeIndex =
     activeSection === "ai"
-      ? Math.min(FLOW.length - 1, Math.floor(sectionProgress * FLOW.length))
+      ? Math.min(
+          aiHome.steps.length - 1,
+          Math.floor(sectionProgress * aiHome.steps.length),
+        )
       : -1;
 
   return (
     <section
       id="ai"
       data-section="ai"
-      className="relative z-10 py-28 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
+      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
     >
       <Container className="relative">
         <SectionPanel className="max-w-4xl">
-          <p className="type-label text-cyan">03 — AI</p>
+          <p className="type-label text-cyan">{aiHome.label}</p>
           <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
-            AI that doesn&apos;t just answer. It acts.
+            {aiHome.title}
           </BlurToSharp>
           <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
-            Nodes, signals and graphs — the same Intelligence Core, reshaped into
-            an acting loop.
+            {aiHome.body}
           </Reveal>
+          <p className="mt-4 max-w-xl text-sm text-fg-muted">{aiHome.outcome}</p>
         </SectionPanel>
 
-        <ol className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-4">
-          {FLOW.map((step, i) => (
-            <li key={step} className="flex items-center gap-3">
-              <span
+        <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {aiHome.steps.map((step, i) => (
+            <li key={step.title}>
+              <div
                 className={[
-                  "type-label border bg-bg-1/80 px-4 py-3 backdrop-blur-sm transition-colors duration-500",
+                  "h-full border bg-bg-1/80 px-4 py-5 backdrop-blur-sm transition-colors duration-500",
                   activeIndex === i
-                    ? "border-cyan text-cyan"
+                    ? "border-cyan text-fg"
                     : "border-white/15 text-fg-muted",
                 ].join(" ")}
               >
-                {step}
-              </span>
-              {i < FLOW.length - 1 && (
-                <span className="hidden text-fg/30 sm:inline" aria-hidden>
-                  →
-                </span>
-              )}
+                <span className="type-label text-cyan">{step.title}</span>
+                <p className="mt-3 text-sm leading-relaxed">{step.body}</p>
+              </div>
             </li>
           ))}
         </ol>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { scrollTo } from "@/lib/scroll/lenis";
 
@@ -9,6 +10,8 @@ type MobileMenuProps = {
   open: boolean;
   links: readonly Link[];
   lang: "EN" | "JA";
+  ctaLabel: string;
+  ctaHref: string;
   onLangChange: (lang: "EN" | "JA") => void;
   onClose: () => void;
 };
@@ -17,17 +20,30 @@ export function MobileMenu({
   open,
   links,
   lang,
+  ctaLabel,
+  ctaHref,
   onLangChange,
   onClose,
 }: MobileMenuProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
   return (
     <div
       id="mobile-menu"
+      ref={panelRef}
       role="dialog"
       aria-modal={open}
       aria-label="Menu"
       hidden={!open}
-      // Prefer inert when closed so focusable children are skipped
       {...(!open ? { inert: true } : {})}
       className={[
         "fixed inset-0 z-40 bg-bg-0/95 backdrop-blur-xl transition-all duration-500 lg:hidden",
@@ -37,7 +53,7 @@ export function MobileMenu({
       ].join(" ")}
       aria-hidden={!open}
     >
-      <div className="flex h-full flex-col justify-between px-6 pb-10 pt-28">
+      <div className="flex h-full flex-col justify-between px-[max(1.5rem,env(safe-area-inset-left))] pb-[max(2.5rem,env(safe-area-inset-bottom))] pr-[max(1.5rem,env(safe-area-inset-right))] pt-[calc(var(--nav-height)+2rem)]">
         <nav className="flex flex-col gap-5" aria-label="Mobile">
           {links.map((link, i) => (
             <a
@@ -45,7 +61,7 @@ export function MobileMenu({
               href={link.href}
               tabIndex={open ? 0 : -1}
               className={[
-                "type-h2 text-fg transition-transform duration-500",
+                "type-h2 min-h-11 text-fg transition-transform duration-500",
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
               ].join(" ")}
               style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
@@ -66,35 +82,43 @@ export function MobileMenu({
 
         <div className="flex flex-col gap-6">
           <div
-            className="type-label text-fg-muted"
+            className="type-label flex items-center gap-1 text-fg-muted"
             role="group"
             aria-label="Language"
           >
             <button
               type="button"
               tabIndex={open ? 0 : -1}
-              className={lang === "EN" ? "text-fg" : ""}
+              className={`min-h-11 min-w-11 px-2 ${lang === "EN" ? "text-fg" : ""}`}
               onClick={() => onLangChange("EN")}
             >
               EN
             </button>
-            <span className="mx-2 text-fg/30">|</span>
+            <span className="text-fg/30">|</span>
             <button
               type="button"
               tabIndex={open ? 0 : -1}
-              className={lang === "JA" ? "text-fg" : ""}
+              className={`min-h-11 min-w-11 px-2 ${lang === "JA" ? "text-fg" : ""}`}
               onClick={() => onLangChange("JA")}
             >
               日本語
             </button>
           </div>
           <Button
-            href="#contact"
+            href={ctaHref}
             tabIndex={open ? 0 : -1}
-            onClick={onClose}
+            onClick={(e) => {
+              if (ctaHref.startsWith("#")) {
+                e.preventDefault();
+                onClose();
+                scrollTo(ctaHref);
+              } else {
+                onClose();
+              }
+            }}
             className="w-full"
           >
-            START A PROJECT
+            {ctaLabel}
           </Button>
         </div>
       </div>

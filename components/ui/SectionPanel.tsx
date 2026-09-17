@@ -9,6 +9,8 @@ type SectionPanelProps = {
   tabIndex?: number;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onPointerEnter?: () => void;
+  onPointerLeave?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
 };

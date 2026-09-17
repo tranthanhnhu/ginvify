@@ -32,5 +32,6 @@ export const spacing = {
 
 export const particleCounts = {
   desktop: 640,
+  tablet: 320,
   mobile: 160,
 } as const;

@@ -6,9 +6,12 @@ import { Services } from "@/components/sections/Services";
 import { AI } from "@/components/sections/AI";
 import { Automation } from "@/components/sections/Automation";
 import { Engineering } from "@/components/sections/Engineering";
+import { Approach } from "@/components/sections/Approach";
+import { Process } from "@/components/sections/Process";
 import { Technology } from "@/components/sections/Technology";
 import { Experiments } from "@/components/sections/Experiments";
 import { About } from "@/components/sections/About";
+import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 import { ScrollStory } from "@/components/sections/ScrollStory";
 import { isLocale, siteUrl, type Locale } from "@/lib/i18n/config";
@@ -64,9 +67,12 @@ export default async function HomePage({ params }: Props) {
       <AI />
       <Automation />
       <Engineering />
+      <Approach />
+      <Process />
       <Technology />
       <Experiments />
       <About />
+      <FAQ />
       <Contact copy={dict.contact} />
     </ScrollStory>
   );

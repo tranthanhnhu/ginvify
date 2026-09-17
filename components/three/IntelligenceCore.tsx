@@ -20,6 +20,7 @@ export type IntelligenceCoreProps = {
   servicesHover?: number | null;
   techGroup?: TechGroup | null;
   isMobile?: boolean;
+  isTablet?: boolean;
   reducedMotion?: boolean;
   paused?: boolean;
 };
@@ -32,11 +33,16 @@ export function IntelligenceCore({
   servicesHover = null,
   techGroup = null,
   isMobile = false,
+  isTablet = false,
   reducedMotion = false,
   paused = false,
 }: IntelligenceCoreProps) {
   const positionsRef = useRef<Float32Array | null>(null);
-  const count = isMobile ? particleCounts.mobile : particleCounts.desktop;
+  const count = isMobile
+    ? particleCounts.mobile
+    : isTablet
+      ? particleCounts.tablet
+      : particleCounts.desktop;
 
   const morphState = useMemo(() => {
     // Scroll-scrubbed: Hero top = G; scroll down dissolves; scroll up restores G
@@ -158,6 +164,7 @@ export function IntelligenceCore({
           sectionProgress * 0.7,
         )}
         reducedMotion={reducedMotion}
+        isMobile={isMobile}
       />
     </group>
   );

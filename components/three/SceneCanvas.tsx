@@ -23,8 +23,10 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
     techGroup,
   } = useScrollProgress();
   const isMobile = useIsMobile();
+  const isTablet = useIsMobile(1024) && !isMobile;
   const reducedMotion = usePrefersReducedMotion();
-  const [visible, setVisible] = useState(true);
+  const [pageVisible, setPageVisible] = useState(true);
+  const [mainVisible, setMainVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -35,7 +37,6 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
       if (!cancelled) setReady(true);
     };
 
-    // Prefer waiting for scroll/interaction so first paint stays light
     const onInteract = () => start();
     window.addEventListener("scroll", onInteract, { once: true, passive: true });
     window.addEventListener("pointerdown", onInteract, { once: true });
@@ -60,14 +61,24 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
   }, []);
 
   useEffect(() => {
-    const el = document.getElementById("webgl-root");
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setVisible(entry?.isIntersecting ?? true),
-      { threshold: 0.05 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    const onVis = () => setPageVisible(!document.hidden);
+    onVis();
+    document.addEventListener("visibilitychange", onVis);
+
+    const main = document.querySelector("main");
+    let io: IntersectionObserver | undefined;
+    if (main) {
+      io = new IntersectionObserver(
+        ([entry]) => setMainVisible(entry?.isIntersecting ?? true),
+        { threshold: 0.02 },
+      );
+      io.observe(main);
+    }
+
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      io?.disconnect();
+    };
   }, [ready]);
 
   if (!mounted || !ready) {
@@ -80,7 +91,7 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
     );
   }
 
-  const paused = !visible || reducedMotion;
+  const paused = !pageVisible || !mainVisible || reducedMotion;
 
   return (
     <div
@@ -89,7 +100,7 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
       aria-hidden
     >
       <Canvas
-        dpr={isMobile ? [1, 1.15] : [1, 1.5]}
+        dpr={isMobile ? [1, 1.15] : isTablet ? [1, 1.35] : [1, 1.5]}
         frameloop={paused ? "never" : "always"}
         gl={{
           antialias: !isMobile,
@@ -98,7 +109,12 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
           stencil: false,
           depth: true,
         }}
-        camera={{ position: [0, 0.6, 4.2], fov: isMobile ? 48 : 42, near: 0.1, far: 50 }}
+        camera={{
+          position: [0, 0.6, 4.2],
+          fov: isMobile ? 48 : 42,
+          near: 0.1,
+          far: 50,
+        }}
         style={{ width: "100%", height: "100%", background: "#050607" }}
       >
         <Suspense fallback={null}>
@@ -110,6 +126,7 @@ export function SceneCanvas({ className = "" }: SceneCanvasProps) {
             servicesHover={servicesHover}
             techGroup={techGroup}
             isMobile={isMobile}
+            isTablet={isTablet}
             reducedMotion={reducedMotion}
             paused={paused}
           />

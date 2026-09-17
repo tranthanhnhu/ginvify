@@ -36,7 +36,7 @@
       "projectType": "プロジェクト種別",
       "message": "メッセージ",
       "submit": "送信する",
-      "success": "メッセージを受け取りました。近日中にご連絡します。",
+      "success": "メッセージを受け取りました。まもなくご連絡します。",
       "projectTypes": [
         "Webアプリケーション",
         "AIエンジニアリング",
@@ -45,13 +45,15 @@
         "ランディングページ",
         "デジタルプロダクト",
         "その他"
-      ]
+      ],
+      "hint": "短いブリーフで十分です — 目標・期間・リンクがあると返信が早くなります。",
+      "successDetail": "確認の質問、または次のステップ案で返信することが多いです。"
     }
   },
   "servicesIndex": {
     "label": "サービス",
     "title": "私たちがつくるもの。",
-    "body": "Web、AI、オートメーション、SaaS、ランディング、デジタルプロダクトまで、6つのケイパビリティ。"
+    "body": "Web、AI、自動化、SaaS、ランディング、デジタルプロダクトまで。アイデアから本番までの一本の流れ。"
   },
   "servicePages": {
     "web-applications": {
@@ -333,21 +335,37 @@
   },
   "pages": {
     "technology": {
-      "label": "テクノロジー",
-      "title": "テクノロジ・コンステレーション。",
-      "body": "AI、Web、クラウド、データ、オートメーション — ロゴの羅列ではない、ひとつの対話的システム。"
+      "label": "TECHNOLOGY",
+      "title": "テクノロジーの星座。",
+      "body": "AI、Web、クラウド、データ、自動化 — ロゴの壁ではない、一つの対話的システム。"
     },
     "experiments": {
-      "label": "実験",
-      "title": "いまつくっているもの。",
-      "body": "コンセプト／実験／プロトタイプを明示。架空の事例紹介はしません。"
+      "label": "EXPERIMENTS",
+      "title": "いま作っているもの。",
+      "body": "CONCEPT / EXPERIMENT / PROTOTYPEを明示。クライアント事例としての捏造はありません。"
     },
     "about": {
-      "label": "会社概要",
-      "title": "GINVIFYは、ソフトウェア・人工知能・インテリジェントオートメーションに取り組むテクノロジー企業です。",
-      "body": "ベトナム発のエンジニアリング。グローバルチームのために。",
-      "secondary": "ベトナム発のエンジニアリング。グローバルチームのために。",
-      "location": "ベトナム・ホーチミン市"
+      "label": "ABOUT",
+      "title": "ベトナム発のEngineering Intelligence。",
+      "body": "GINVIFYは、明快さ・クラフト・本番の規律を求めるチームのために、ソフトウェア・AI・知的自動化を設計・構築します。",
+      "secondary": "ディスカバリーから設計、実装、ローンチまで伴走。必要に応じて英語／日本語のバイリンガル協業にも対応します。",
+      "location": "ホーチミン市、ベトナム",
+      "principlesTitle": "私たちの働き方",
+      "principles": [
+        {
+          "title": "スライドよりシステム",
+          "body": "フォルダで死ぬ資料ではなく、動くアーキテクチャを出荷します。"
+        },
+        {
+          "title": "意図ある知性",
+          "body": "AIはレバレッジがあるところだけ：検索、エージェント、ビジョン、自動化。"
+        },
+        {
+          "title": "静かなクラフト",
+          "body": "ポートフォリオのためではなく、プロダクトのためのUIとモーション。"
+        }
+      ],
+      "cta": "相談する"
     },
     "contact": {
       "label": "お問い合わせ",
@@ -366,7 +384,8 @@
   },
   "hero": {
     "headline": "Engineering Intelligence.",
-    "body": "Webアプリケーション、AIシステム、オートメーション、SaaSプロダクトの設計と構築。",
+    "body": "Webアプリケーション、AIシステム、自動化、SaaSプロダクトを設計・構築します。",
+    "supporting": "アイデアから知的システムへ — クラフト、明快さ、本番の規律。",
     "ctaPrimary": "プロジェクトを始める",
     "ctaSecondary": "サービスを見る"
   },
@@ -374,12 +393,368 @@
     "label": "01 — IDEA",
     "headline": "すべてのプロダクトはアイデアから始まる。",
     "word": "IDEA",
-    "body": "粒子の場はGから始まった同じシステム — アイデアがアーキテクチャになる前の空間です。"
+    "body": "パーティクルはGから始まった同じシステム — アイデアが建築になる前の空間です。",
+    "bullets": [
+      "スタックより先に課題を定義する。",
+      "ユーザー・データ・判断を一つの物語に落とす。",
+      "曖昧なアイデアを構築可能な設計にする。"
+    ]
   },
   "aboutHome": {
-    "label": "08 — 会社概要",
-    "headline": "GINVIFYは、ソフトウェア・人工知能・インテリジェントオートメーションに取り組むテクノロジー企業です。",
+    "label": "08 — ABOUT",
+    "headline": "GINVIFYは、ソフトウェア、人工知能、知的自動化に焦点を当てたテクノロジー企業です。",
     "secondary": "ベトナム発のエンジニアリング。グローバルチームのために。",
-    "location": "ベトナム・ホーチミン市"
+    "body": "プロダクトクラフトとシステムエンジニアリングを両立し、スケールしてもUI・データ・知性が一貫するよう設計します。",
+    "location": "ホーチミン市、ベトナム"
+  },
+  "servicesHome": {
+    "label": "02 — SERVICES",
+    "title": "私たちがつくるもの。",
+    "body": "6つの能力。一つの連続したシステム — カードにフォーカスするとCoreが応答します。",
+    "viewService": "詳細を見る",
+    "items": [
+      {
+        "id": "01",
+        "slug": "web-applications",
+        "title": "WEB APPLICATIONS",
+        "body": "パフォーマンスと拡張性、実ユーザーのためのモダンWebアプリ — UIからAPI、クラウドまで。",
+        "tags": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Node.js",
+          "APIs",
+          "Cloud"
+        ]
+      },
+      {
+        "id": "02",
+        "slug": "ai-engineering",
+        "title": "AI ENGINEERING",
+        "body": "LLM、RAG、エージェント、ビジョンを本番ワークフローに組み込む知的アプリケーション。",
+        "tags": [
+          "LLMs",
+          "RAG",
+          "AI Agents",
+          "Machine Learning",
+          "Computer Vision",
+          "AI APIs"
+        ]
+      },
+      {
+        "id": "03",
+        "slug": "automation",
+        "title": "AUTOMATION",
+        "body": "繰り返し業務を、観察・判断・実行する知的システムへ。",
+        "tags": [
+          "Workflow automation",
+          "API integration",
+          "AI automation",
+          "Agentic workflows",
+          "Business process"
+        ]
+      },
+      {
+        "id": "04",
+        "slug": "saas-platforms",
+        "title": "SAAS PLATFORMS",
+        "body": "マルチテナント基盤、課金、ダッシュボードを備えたSaaSの設計と実装。",
+        "tags": [
+          "Multi-tenant",
+          "Authentication",
+          "Subscriptions",
+          "Dashboards",
+          "Analytics",
+          "Cloud architecture"
+        ]
+      },
+      {
+        "id": "05",
+        "slug": "landing-pages",
+        "title": "LANDING PAGES",
+        "body": "ブランド、コンバージョン、モーションに焦点を当てたプレミアムなLP。",
+        "tags": [
+          "Brand",
+          "Conversion",
+          "Performance",
+          "Motion",
+          "Storytelling"
+        ]
+      },
+      {
+        "id": "06",
+        "slug": "digital-products",
+        "title": "DIGITAL PRODUCTS",
+        "body": "アイデアから本番まで — ディスカバリーからデプロイ、継続的な改善。",
+        "tags": [
+          "Discovery",
+          "UI/UX",
+          "Prototype",
+          "MVP",
+          "Engineering",
+          "Deployment"
+        ]
+      }
+    ]
+  },
+  "aiHome": {
+    "label": "03 — AI",
+    "title": "答えるだけではない。行動するAI。",
+    "body": "ノード、シグナル、グラフ — 同じIntelligence Coreが行動ループへ形を変えます。",
+    "outcome": "文脈を観察し、ツールで推論し、安全に行動するソフトウェア。チャットのデモではありません。",
+    "steps": [
+      {
+        "title": "OBSERVE",
+        "body": "ユーザー・データ・システムから信号を取り込む。"
+      },
+      {
+        "title": "REASON",
+        "body": "検索し、評価し、次の一手を計画する。"
+      },
+      {
+        "title": "DECIDE",
+        "body": "ガードレールと確信度をもって行動を選ぶ。"
+      },
+      {
+        "title": "ACT",
+        "body": "本番でツール、API、ワークフローを実行する。"
+      },
+      {
+        "title": "LEARN",
+        "body": "結果を測り、ループを改善する。"
+      }
+    ]
+  },
+  "automationHome": {
+    "label": "04 — AUTOMATION",
+    "title": "繰り返し作業を知的システムへ。",
+    "body": "生きたワークフロー — スクロールでノードが活性化し、同じCoreをパケットが旅します。",
+    "caption": "顧客の意図から、アプリ・エージェント・データ横断のアクションまで。",
+    "scrollHint": "スワイプしてパイプラインを見る",
+    "nodes": [
+      "CUSTOMER",
+      "WEB APP",
+      "API",
+      "AI AGENT",
+      "DATABASE",
+      "CRM",
+      "ACTION"
+    ]
+  },
+  "engineeringHome": {
+    "label": "05 — ENGINEERING",
+    "title": "アイデアから本番へ。",
+    "body": "アーキテクチャ、統合、スケールのエンジニアリングパートナー。偽のダッシュボードではありません。",
+    "codeSnippet": "// system.architecture\nlayers: [ edge, api, intelligence, data, ops ]\nconnect(discover → design → engineer → integrate → deploy → scale)",
+    "steps": [
+      {
+        "title": "DISCOVER",
+        "body": "目標・制約・成功指標を明確にする。"
+      },
+      {
+        "title": "DESIGN",
+        "body": "UX、データモデル、境界を設計する。"
+      },
+      {
+        "title": "ENGINEER",
+        "body": "堅牢なUI、API、インテリジェンスを実装する。"
+      },
+      {
+        "title": "INTEGRATE",
+        "body": "ツール、認証、データ、外部連携をつなぐ。"
+      },
+      {
+        "title": "DEPLOY",
+        "body": "CI/CD、観測、ロールバック可能な形で出荷する。"
+      },
+      {
+        "title": "SCALE",
+        "body": "性能・コスト・運用負荷を強化する。"
+      }
+    ]
+  },
+  "approachHome": {
+    "label": "05B — APPROACH",
+    "title": "すべての構築への向き合い方。",
+    "body": "最初のスケッチから本番まで、プロダクトを一貫させる三つの動き。",
+    "items": [
+      {
+        "title": "Discover",
+        "body": "アイデアを検証する：ユーザー、業務、リスク、「完了」の定義。"
+      },
+      {
+        "title": "Design systems",
+        "body": "プロダクトとプラットフォームを同時に設計 — UI、データ、AI、運用を一つの物語に。"
+      },
+      {
+        "title": "Ship & iterate",
+        "body": "スライスでリリースし、重要な指標を測り、基盤を壊さず進化させる。"
+      }
+    ]
+  },
+  "processHome": {
+    "label": "05C — PROCESS",
+    "title": "ブリーフから進化するシステムへ。",
+    "body": "出荷を遅らせない、明確な進め方。",
+    "steps": [
+      {
+        "title": "Brief",
+        "body": "成果・範囲・制約を揃える。"
+      },
+      {
+        "title": "Architecture",
+        "body": "本格実装の前にシステム地図を描く。"
+      },
+      {
+        "title": "Build",
+        "body": "レビュー可能な垂直スライスで実装する。"
+      },
+      {
+        "title": "Launch",
+        "body": "デプロイ、監視、安定化。"
+      },
+      {
+        "title": "Evolve",
+        "body": "機能・知性・スケールを継続的に拡張する。"
+      }
+    ]
+  },
+  "technologyHome": {
+    "label": "06 — TECHNOLOGY",
+    "title": "テクノロジーの星座。",
+    "body": "ロゴの壁ではない — 同じCoreの中にある五つのクラスター。グループにフォーカスして強調します。",
+    "groups": [
+      {
+        "id": "ai",
+        "label": "AI",
+        "why": "検索し、推論し、行動する知性。",
+        "items": [
+          "LLMs",
+          "RAG",
+          "Agents",
+          "Computer Vision",
+          "Machine Learning"
+        ]
+      },
+      {
+        "id": "web",
+        "label": "WEB",
+        "why": "長く使えるプロダクトUIとAPI。",
+        "items": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Node.js"
+        ]
+      },
+      {
+        "id": "cloud",
+        "label": "CLOUD",
+        "why": "きれいにデプロイしスケールする基盤。",
+        "items": [
+          "AWS",
+          "Cloud infrastructure",
+          "Docker",
+          "CI/CD"
+        ]
+      },
+      {
+        "id": "data",
+        "label": "DATA",
+        "why": "プロダクトとAIのための構造化された記憶。",
+        "items": [
+          "PostgreSQL",
+          "Vector databases",
+          "Data pipelines"
+        ]
+      },
+      {
+        "id": "automation",
+        "label": "AUTOMATION",
+        "why": "システムを端到端でつなぐワークフロー。",
+        "items": [
+          "APIs",
+          "Workflows",
+          "AI Agents",
+          "Integrations"
+        ]
+      }
+    ]
+  },
+  "experimentsHome": {
+    "label": "07 — EXPERIMENTS",
+    "title": "いま作っているもの。",
+    "body": "コンセプト／実験／プロトタイプを明示。クライアント事例として偽ることはありません。",
+    "empty": "このフィルタにはまだありません。別のラベルを試すか、あとでまた確認してください。",
+    "filters": [
+      "ALL",
+      "CONCEPT",
+      "EXPERIMENT",
+      "PROTOTYPE",
+      "ARCHIVE"
+    ],
+    "items": [
+      {
+        "title": "AI AGENT SYSTEM",
+        "label": "EXPERIMENT",
+        "blurb": "ツール横断で観察・判断・実行する多段エージェント — 本番形のループ実験。"
+      },
+      {
+        "title": "SAAS PLATFORM CONCEPT",
+        "label": "CONCEPT",
+        "blurb": "継続価値のためのマルチテナント構想 — 重い実装の前に枠を描く。"
+      },
+      {
+        "title": "AUTOMATION ENGINE",
+        "label": "PROTOTYPE",
+        "blurb": "APIとエージェントを可視化された状態のアクションへ変えるワークフロー。"
+      },
+      {
+        "title": "AI DOCUMENT SYSTEM",
+        "label": "EXPERIMENT",
+        "blurb": "実プロダクト面での構造化検索と生成のためのRAG。"
+      },
+      {
+        "title": "COMPUTER VISION LAB",
+        "label": "EXPERIMENT",
+        "blurb": "プロダクト／運用向け知覚の実験 — まだ探索段階。"
+      },
+      {
+        "title": "DIGITAL PRODUCT CONCEPT",
+        "label": "CONCEPT",
+        "blurb": "アイデアから本番パスまでのプロダクト構想。偽のクライアントは作りません。"
+      }
+    ]
+  },
+  "faqHome": {
+    "label": "08B — FAQ",
+    "title": "始める前の質問。",
+    "body": "率直な回答 — 協業の仕方を明確にします。",
+    "items": [
+      {
+        "q": "どんな案件を受けますか？",
+        "a": "Webアプリ、AI、自動化、SaaS、LP、デジタルプロダクト。クラフトとシステム思考の両方が重要な案件に特に向いています。"
+      },
+      {
+        "q": "AIはいつ入れるべき？",
+        "a": "レバレッジがあるとき：検索、エージェント、ビジョン、業務自動化。新規性だけのチャット重ねには使いません。"
+      },
+      {
+        "q": "期間の目安は？",
+        "a": "範囲次第です。ブリーフとアーキテクチャのスライスから始め、確認できる増分で出荷します。"
+      },
+      {
+        "q": "英語と日本語の両方で働けますか？",
+        "a": "はい。サイトと協業は英語／日本語で進められます。"
+      },
+      {
+        "q": "キックオフはどうしますか？",
+        "a": "Contactから短いブリーフを送ってください。目標・制約・期間・リンクがあると次の提案が早くなります。"
+      },
+      {
+        "q": "Experimentsは実クライアント案件？",
+        "a": "いいえ。CONCEPT / EXPERIMENT / PROTOTYPEとラベルします。クライアント・受賞・指標の捏造はしません。"
+      }
+    ]
   }
 }

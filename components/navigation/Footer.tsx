@@ -13,7 +13,7 @@ export function Footer({ locale }: FooterProps) {
   const { footer, nav } = useDictionary();
 
   return (
-    <footer className="relative z-10 mt-8 border-t border-white/10 bg-bg-0/90">
+    <footer className="relative z-10 mt-8 border-t border-white/10 bg-bg-0/90 pb-[env(safe-area-inset-bottom,0px)]">
       <Container className="flex flex-col gap-8 py-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="font-display text-lg tracking-[0.2em] text-fg">

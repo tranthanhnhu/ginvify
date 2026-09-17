@@ -22,9 +22,12 @@ const SECTIONS: StorySection[] = [
   "ai",
   "automation",
   "engineering",
+  "approach",
+  "process",
   "technology",
   "experiments",
   "about",
+  "faq",
   "contact",
 ];
 
@@ -35,6 +38,7 @@ export function ScrollStory({ children }: { children: ReactNode }) {
     if (!hero || !idea) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canPin = window.matchMedia("(min-width: 768px)").matches;
 
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
@@ -78,7 +82,7 @@ export function ScrollStory({ children }: { children: ReactNode }) {
         },
       });
 
-      if (!reduced) {
+      if (!reduced && canPin) {
         ScrollTrigger.create({
           trigger: idea,
           start: "top top",

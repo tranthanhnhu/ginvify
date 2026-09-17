@@ -6,92 +6,56 @@ import { SectionPanel } from "@/components/ui/SectionPanel";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
 import { GinvifyCat } from "@/components/mascot/GinvifyCat";
+import { useDictionary } from "@/components/i18n/DictionaryProvider";
 
 type Label = "CONCEPT" | "EXPERIMENT" | "PROTOTYPE";
 
-const ITEMS: {
-  title: string;
-  label: Label;
-  blurb: string;
-}[] = [
-  {
-    title: "AI AGENT SYSTEM",
-    label: "EXPERIMENT",
-    blurb: "Multi-step agents that observe, decide and act across tools.",
-  },
-  {
-    title: "SAAS PLATFORM CONCEPT",
-    label: "CONCEPT",
-    blurb: "Multi-tenant product architecture for recurring value.",
-  },
-  {
-    title: "AUTOMATION ENGINE",
-    label: "PROTOTYPE",
-    blurb: "Workflow graph that turns APIs and agents into actions.",
-  },
-  {
-    title: "AI DOCUMENT SYSTEM",
-    label: "EXPERIMENT",
-    blurb: "RAG pipelines for structured retrieval and generation.",
-  },
-  {
-    title: "COMPUTER VISION LAB",
-    label: "EXPERIMENT",
-    blurb: "Perception experiments for product and operations use cases.",
-  },
-  {
-    title: "DIGITAL PRODUCT CONCEPT",
-    label: "CONCEPT",
-    blurb: "End-to-end product framing from idea to production path.",
-  },
-];
+type ExperimentsProps = {
+  hideIntro?: boolean;
+};
 
-const FILTERS: Array<"ALL" | Label | "ARCHIVE"> = [
-  "ALL",
-  "CONCEPT",
-  "EXPERIMENT",
-  "PROTOTYPE",
-  "ARCHIVE",
-];
-
-export function Experiments() {
-  const [filter, setFilter] = useState<"ALL" | Label | "ARCHIVE">("ALL");
+export function Experiments({ hideIntro = false }: ExperimentsProps) {
+  const { experimentsHome } = useDictionary();
+  const [filter, setFilter] = useState<string>("ALL");
 
   const visible = useMemo(() => {
-    if (filter === "ALL") return ITEMS;
+    if (filter === "ALL") return experimentsHome.items;
     if (filter === "ARCHIVE") return [];
-    return ITEMS.filter((item) => item.label === filter);
-  }, [filter]);
+    return experimentsHome.items.filter((item) => item.label === filter);
+  }, [filter, experimentsHome.items]);
 
   return (
     <section
       id="experiments"
       data-section="experiments"
-      className="relative z-10 py-28 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/55"
+      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/55"
     >
       <Container className="relative">
-        <SectionPanel className="max-w-3xl">
-          <p className="type-label text-fg-muted">07 — EXPERIMENTS</p>
-          <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
-            Things We&apos;re Building.
-          </BlurToSharp>
-          <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
-            Conceptual and experimental work — clearly labeled. Nothing fabricated
-            as a client case study.
-          </Reveal>
-        </SectionPanel>
+        {!hideIntro && (
+          <SectionPanel className="max-w-3xl">
+            <p className="type-label text-fg-muted">{experimentsHome.label}</p>
+            <BlurToSharp as="h2" className="type-h1 mt-5 text-fg">
+              {experimentsHome.title}
+            </BlurToSharp>
+            <Reveal as="p" className="mt-6 max-w-xl text-fg-muted">
+              {experimentsHome.body}
+            </Reveal>
+          </SectionPanel>
+        )}
 
         <div
-          className="mt-10 flex flex-wrap gap-2"
+          className={["flex flex-wrap gap-2", hideIntro ? "mt-0" : "mt-10"].join(
+            " ",
+          )}
           role="group"
           aria-label="Filter experiments"
         >
-          {FILTERS.map((f) => (
+          {experimentsHome.filters.map((f) => (
             <button
               key={f}
               type="button"
               className={[
-                "type-label border px-3 py-2 transition-colors",
+                "type-label min-h-11 border px-3 py-2 transition-colors",
                 filter === f
                   ? "border-lime text-lime"
                   : "border-white/15 text-fg-muted hover:text-fg",
@@ -107,10 +71,7 @@ export function Experiments() {
         {visible.length === 0 ? (
           <SectionPanel className="mt-16 flex flex-col items-center gap-6 py-16 text-center">
             <GinvifyCat variant="wave" />
-            <p className="max-w-sm text-fg-muted">
-              Nothing in this filter right now. Try another label — or check back
-              as experiments land.
-            </p>
+            <p className="max-w-sm text-fg-muted">{experimentsHome.empty}</p>
           </SectionPanel>
         ) : (
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -13,7 +13,7 @@ export function About() {
     <section
       id="about"
       data-section="about"
-      className="relative z-10 py-28 sm:py-40 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
+      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/50"
     >
       <Container narrow className="relative">
         <SectionPanel>
@@ -24,6 +24,7 @@ export function About() {
           <Reveal as="p" className="mt-8 text-lg text-fg-muted">
             {aboutHome.secondary}
           </Reveal>
+          <p className="mt-6 text-fg-muted">{aboutHome.body}</p>
           <p className="type-label mt-12 text-cyan">{aboutHome.location}</p>
         </SectionPanel>
       </Container>

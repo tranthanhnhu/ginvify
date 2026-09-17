@@ -15,9 +15,12 @@ export type StorySection =
   | "ai"
   | "automation"
   | "engineering"
+  | "approach"
+  | "process"
   | "technology"
   | "experiments"
   | "about"
+  | "faq"
   | "contact";
 
 export type TechGroup = "ai" | "web" | "cloud" | "data" | "automation";
@@ -142,12 +145,15 @@ export function morphForSection(section: StorySection): MorphTargetName {
     case "services":
     case "ai":
     case "about":
+    case "approach":
       return "network";
     case "automation":
+    case "process":
       return "workflow";
     case "engineering":
       return "architecture";
     case "technology":
+    case "faq":
       return "constellation";
     case "experiments":
       return "cluster";

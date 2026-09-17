@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -42,10 +42,16 @@ type NavbarProps = {
 export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
   const { scrolled } = useScrollProgress();
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const router = useRouter();
   const isHome =
     pathname === `/${locale}` || pathname === `/${locale}/`;
+
+  function closeMenu() {
+    setOpen(false);
+    requestAnimationFrame(() => menuButtonRef.current?.focus());
+  }
 
   const links = [
     {
@@ -100,7 +106,7 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
     <>
       <header
         className={[
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+          "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-all duration-500",
           scrolled ? "py-2" : "py-4",
         ].join(" ")}
       >
@@ -180,8 +186,9 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
             </div>
 
             <button
+              ref={menuButtonRef}
               type="button"
-              className="type-label text-fg lg:hidden"
+              className="type-label flex min-h-11 min-w-11 items-center justify-center text-fg lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               onClick={() => setOpen((v) => !v)}
@@ -196,8 +203,10 @@ export function Navbar({ locale, labels = DEFAULT_LABELS }: NavbarProps) {
         open={open}
         links={links}
         lang={locale === "en" ? "EN" : "JA"}
+        ctaLabel={labels.cta}
+        ctaHref={isHome ? "#contact" : `/${locale}/contact`}
         onLangChange={(lang) => switchLocale(lang === "EN" ? "en" : "jp")}
-        onClose={() => setOpen(false)}
+        onClose={closeMenu}
       />
     </>
   );

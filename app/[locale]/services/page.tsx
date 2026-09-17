@@ -39,7 +39,7 @@ export default async function ServicesIndexPage({ params }: Props) {
   const dict = await getDictionary(locale);
 
   return (
-    <div className="pb-28 pt-32">
+    <div className="pb-section pt-[calc(var(--nav-height)+2rem)]">
       <Container>
         <p className="type-label text-cyan">{dict.servicesIndex.label}</p>
         <BlurToSharp as="h1" className="type-h1 mt-5 text-fg">
@@ -47,7 +47,7 @@ export default async function ServicesIndexPage({ params }: Props) {
         </BlurToSharp>
         <p className="mt-6 max-w-2xl text-fg-muted">{dict.servicesIndex.body}</p>
 
-        <ul className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
           {serviceSlugs.map((slug) => {
             const page = dict.servicePages[slug];
             return (

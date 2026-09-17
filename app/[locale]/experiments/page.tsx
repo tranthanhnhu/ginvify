@@ -29,17 +29,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ExperimentsPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
-  const locale = raw as Locale;
-  const dict = await getDictionary(locale);
+  const dict = await getDictionary(raw as Locale);
 
   return (
-    <div className="pt-16">
-      <Container className="pt-16">
+    <div className="pb-section pt-[calc(var(--nav-height)+2rem)]">
+      <Container>
         <p className="type-label text-fg-muted">{dict.pages.experiments.label}</p>
         <h1 className="type-h1 mt-4 text-fg">{dict.pages.experiments.title}</h1>
         <p className="mt-4 max-w-xl text-fg-muted">{dict.pages.experiments.body}</p>
       </Container>
-      <Experiments />
+      <Experiments hideIntro />
     </div>
   );
 }

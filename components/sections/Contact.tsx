@@ -23,7 +23,9 @@ export type ContactCopy = {
     projectType: string;
     message: string;
     submit: string;
+    hint: string;
     success: string;
+    successDetail: string;
     projectTypes: string[];
   };
 };
@@ -43,7 +45,9 @@ const DEFAULT_COPY: ContactCopy = {
     projectType: "Project type",
     message: "Message",
     submit: "Send message",
+    hint: "A short brief is enough — goals, timeline and links help us respond faster.",
     success: "Message received. We'll be in touch soon.",
+    successDetail: "We usually reply with clarifying questions or a proposed next step.",
     projectTypes: [
       "Web Application",
       "AI Engineering",
@@ -77,7 +81,7 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
     <section
       id="contact"
       data-section="contact"
-      className="relative z-10 py-28 sm:py-40"
+      className="relative z-10 py-section"
     >
       <div className="pointer-events-none absolute inset-0 bg-bg-0/60" />
       <Container className="relative">
@@ -121,11 +125,13 @@ export function Contact({ copy = DEFAULT_COPY }: ContactProps) {
           <SectionPanel id="contact-form">
             {sent ? (
               <div className="flex flex-col items-start gap-5">
-                <GinvifyCat variant="idle" className="h-20 w-20" />
+                <GinvifyCat variant="idle" className="h-28 w-20" />
                 <p className="text-fg">{copy.form.success}</p>
+                <p className="text-sm text-fg-muted">{copy.form.successDetail}</p>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-4">
+                <p className="text-sm text-fg-muted">{copy.form.hint}</p>
                 <Field label={copy.form.name} name="name" required />
                 <Field
                   label={copy.form.email}

@@ -13,7 +13,7 @@ export function Idea() {
     <section
       id="idea"
       data-section="idea"
-      className="relative z-10 flex min-h-[100svh] items-center py-24"
+      className="relative z-10 flex min-h-[100svh] items-center py-20 md:py-24"
     >
       <div className="pointer-events-none absolute inset-0 bg-bg-0/45" />
 
@@ -28,12 +28,23 @@ export function Idea() {
           <Reveal
             as="p"
             mode="words"
-            className="mt-12 type-display text-lime"
+            className="mt-10 type-display text-lime md:mt-12"
           >
             {idea.word}
           </Reveal>
 
           <p className="mt-8 max-w-md text-fg-muted">{idea.body}</p>
+
+          <ul className="mt-8 space-y-3 border-t border-white/10 pt-6">
+            {idea.bullets.map((bullet) => (
+              <li
+                key={bullet}
+                className="flex gap-3 text-sm text-fg-muted before:mt-2 before:h-1.5 before:w-1.5 before:shrink-0 before:rounded-full before:bg-lime before:content-['']"
+              >
+                {bullet}
+              </li>
+            ))}
+          </ul>
         </SectionPanel>
       </Container>
     </section>

@@ -35,14 +35,27 @@
   --fg-muted: #9aa3a8;
   --on-lime: #050607;
 
-  --type-display: clamp(3.5rem, 8vw, 7.5rem);
-  --type-h1: clamp(2.5rem, 5vw, 4.5rem);
-  --type-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --type-display: clamp(2.5rem, 7vw, 7.5rem);
+  --type-h1: clamp(1.85rem, 4.5vw, 4.5rem);
+  --type-h2: clamp(1.4rem, 2.8vw, 2.75rem);
   --type-body: clamp(1rem, 1.2vw, 1.125rem);
   --type-label: 0.75rem;
 
   --nav-height: 4.5rem;
   --nav-height-compact: 3.25rem;
+  --section-py: 5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-py: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-py: 9rem;
+  }
 }
 
 * {
@@ -130,6 +143,18 @@ button {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.py-section {
+  padding-block: var(--section-py);
+}
+
+.pb-section {
+  padding-bottom: var(--section-py);
+}
+
+.pt-nav {
+  padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
 }
 
 @media (prefers-reduced-motion: reduce) {

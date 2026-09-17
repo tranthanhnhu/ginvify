@@ -14,7 +14,7 @@ export function Container({
   return (
     <div
       className={[
-        "mx-auto w-full px-5 sm:px-8",
+        "mx-auto w-full px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:px-8 md:px-10",
         narrow ? "max-w-3xl" : "max-w-7xl",
         className,
       ].join(" ")}

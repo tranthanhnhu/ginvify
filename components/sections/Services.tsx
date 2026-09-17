@@ -1,100 +1,48 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { SectionPanel } from "@/components/ui/SectionPanel";
 import { BlurToSharp } from "@/components/animation/BlurToSharp";
 import { Reveal } from "@/components/animation/Reveal";
+import { useDictionary } from "@/components/i18n/DictionaryProvider";
 import { setScrollStore } from "@/lib/scroll/useScrollProgress";
-
-const SERVICES = [
-  {
-    id: "01",
-    title: "WEB APPLICATIONS",
-    body: "Modern web applications built for performance, scalability and real users.",
-    tags: ["React", "Next.js", "TypeScript", "Node.js", "APIs", "Cloud"],
-  },
-  {
-    id: "02",
-    title: "AI ENGINEERING",
-    body: "Build intelligent applications using LLMs, RAG, agents and vision systems.",
-    tags: ["LLMs", "RAG", "AI Agents", "Machine Learning", "Computer Vision", "AI APIs"],
-  },
-  {
-    id: "03",
-    title: "AUTOMATION",
-    body: "Transform repetitive workflows into intelligent systems.",
-    tags: [
-      "Workflow automation",
-      "API integration",
-      "AI automation",
-      "Agentic workflows",
-      "Business process",
-    ],
-  },
-  {
-    id: "04",
-    title: "SAAS PLATFORMS",
-    body: "Design and engineer scalable SaaS products.",
-    tags: [
-      "Multi-tenant",
-      "Authentication",
-      "Subscriptions",
-      "Dashboards",
-      "Analytics",
-      "Cloud architecture",
-    ],
-  },
-  {
-    id: "05",
-    title: "LANDING PAGES",
-    body: "Premium interactive landing pages focused on brand, conversion and motion.",
-    tags: ["Brand", "Conversion", "Performance", "Motion", "Storytelling"],
-  },
-  {
-    id: "06",
-    title: "DIGITAL PRODUCTS",
-    body: "From idea to production — discovery through deployment and optimization.",
-    tags: [
-      "Discovery",
-      "UI/UX",
-      "Prototype",
-      "MVP",
-      "Engineering",
-      "Deployment",
-    ],
-  },
-] as const;
+import type { Locale } from "@/lib/i18n/config";
 
 export function Services() {
+  const { servicesHome } = useDictionary();
+  const pathname = usePathname();
+  const locale = (pathname?.split("/")[1] === "jp" ? "jp" : "en") as Locale;
+
   return (
     <section
       id="services"
       data-section="services"
-      className="relative z-10 py-28 sm:py-36 before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/55"
+      className="relative z-10 py-section before:pointer-events-none before:absolute before:inset-0 before:bg-bg-0/55"
     >
       <Container className="relative">
-        <p className="type-label text-cyan">02 — SERVICES</p>
+        <p className="type-label text-cyan">{servicesHome.label}</p>
         <BlurToSharp as="h2" className="type-h1 mt-5 max-w-3xl text-fg">
-          What we build.
+          {servicesHome.title}
         </BlurToSharp>
         <Reveal as="p" className="mt-5 max-w-xl text-fg-muted">
-          Six capabilities. One continuous system — hover a card and the Core
-          responds.
+          {servicesHome.body}
         </Reveal>
 
-        <ul className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, index) => (
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
+          {servicesHome.items.map((service, index) => (
             <li key={service.id}>
               <SectionPanel
                 as="article"
-                className="group h-full transition-colors duration-300 hover:border-lime/45 hover:bg-bg-2/85"
-                onMouseEnter={() => setScrollStore({ servicesHover: index })}
-                onMouseLeave={() => setScrollStore({ servicesHover: null })}
+                className="group h-full transition-colors duration-300 hover:border-lime/45 hover:bg-bg-2/85 focus-within:border-lime/45"
+                onPointerEnter={() => setScrollStore({ servicesHover: index })}
+                onPointerLeave={() => setScrollStore({ servicesHover: null })}
                 onFocus={() => setScrollStore({ servicesHover: index })}
                 onBlur={() => setScrollStore({ servicesHover: null })}
                 tabIndex={0}
               >
-                <p className="type-label text-fg-muted transition-colors group-hover:text-lime">
+                <p className="type-label text-fg-muted transition-colors group-hover:text-lime group-focus-within:text-lime">
                   {service.id}
                 </p>
                 <h3 className="mt-4 text-lg font-medium tracking-tight text-fg">
@@ -113,6 +61,12 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href={`/${locale}/services/${service.slug}`}
+                  className="type-label mt-6 inline-flex text-cyan transition-colors hover:text-lime"
+                >
+                  {servicesHome.viewService} →
+                </Link>
               </SectionPanel>
             </li>
           ))}

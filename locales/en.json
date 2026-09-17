@@ -36,7 +36,9 @@
       "projectType": "Project type",
       "message": "Message",
       "submit": "Send message",
+      "hint": "A short brief is enough — goals, timeline and links help us respond faster.",
       "success": "Message received. We'll be in touch soon.",
+      "successDetail": "We usually reply with clarifying questions or a proposed next step.",
       "projectTypes": [
         "Web Application",
         "AI Engineering",
@@ -51,7 +53,7 @@
   "servicesIndex": {
     "label": "SERVICES",
     "title": "What we build.",
-    "body": "Six capabilities spanning web, AI, automation, SaaS, landing experiences and full digital products."
+    "body": "Six capabilities spanning web, AI, automation, SaaS, landing experiences and full digital products — one continuum from idea to production."
   },
   "servicePages": {
     "web-applications": {
@@ -335,19 +337,35 @@
     "technology": {
       "label": "TECHNOLOGY",
       "title": "Technology constellation.",
-      "body": "AI, web, cloud, data and automation — one interactive system, not a logo wall."
+      "body": "AI, web, cloud, data and automation — one interactive system, not a logo wall. Explore how we assemble stacks for real products."
     },
     "experiments": {
       "label": "EXPERIMENTS",
       "title": "Things We're Building.",
-      "body": "Conceptual and experimental work — clearly labeled. Nothing fabricated as a client case study."
+      "body": "Conceptual and experimental work — clearly labeled CONCEPT, EXPERIMENT or PROTOTYPE. Nothing fabricated as a client case study."
     },
     "about": {
       "label": "ABOUT",
-      "title": "GINVIFY is a technology company focused on software, artificial intelligence and intelligent automation.",
-      "body": "Engineering from Vietnam. Built for global teams.",
-      "secondary": "Engineering from Vietnam. Built for global teams.",
-      "location": "Ho Chi Minh City, Vietnam"
+      "title": "Engineering intelligence from Vietnam.",
+      "body": "GINVIFY designs and builds software, AI systems and intelligent automation for teams who need clarity, craft and production discipline.",
+      "secondary": "We partner from discovery through architecture, build and launch — with bilingual collaboration in English and Japanese when you need it.",
+      "location": "Ho Chi Minh City, Vietnam",
+      "principlesTitle": "How we work",
+      "principles": [
+        {
+          "title": "Systems over slides",
+          "body": "We ship working architecture — not decks that die in a folder."
+        },
+        {
+          "title": "Intelligence with intent",
+          "body": "AI only where it creates leverage: retrieval, agents, vision, automation."
+        },
+        {
+          "title": "Quiet craft",
+          "body": "Premium interfaces and motion that serve the product, not the portfolio."
+        }
+      ],
+      "cta": "Talk with us"
     },
     "contact": {
       "label": "CONTACT",
@@ -367,6 +385,7 @@
   "hero": {
     "headline": "Engineering Intelligence.",
     "body": "We design and build web applications, AI systems, automation and SaaS products.",
+    "supporting": "From Ideas to Intelligent Systems — craft, clarity and production discipline.",
     "ctaPrimary": "START A PROJECT",
     "ctaSecondary": "EXPLORE SERVICES"
   },
@@ -374,12 +393,368 @@
     "label": "01 — IDEA",
     "headline": "Every product starts with an idea.",
     "word": "IDEA",
-    "body": "The particle field is the same system that began as the G — now the space an idea occupies before it becomes architecture."
+    "body": "The particle field is the same system that began as the G — now the space an idea occupies before it becomes architecture.",
+    "bullets": [
+      "Frame the problem before the stack.",
+      "Map users, data and decisions into one system story.",
+      "Turn a vague idea into a buildable architecture."
+    ]
+  },
+  "servicesHome": {
+    "label": "02 — SERVICES",
+    "title": "What we build.",
+    "body": "Six capabilities. One continuous system — focus a card and the Core responds.",
+    "viewService": "View service",
+    "items": [
+      {
+        "id": "01",
+        "slug": "web-applications",
+        "title": "WEB APPLICATIONS",
+        "body": "Modern web applications built for performance, scalability and real users — from interface to API to cloud.",
+        "tags": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Node.js",
+          "APIs",
+          "Cloud"
+        ]
+      },
+      {
+        "id": "02",
+        "slug": "ai-engineering",
+        "title": "AI ENGINEERING",
+        "body": "Intelligent applications using LLMs, RAG, agents and vision — wired into real product workflows.",
+        "tags": [
+          "LLMs",
+          "RAG",
+          "AI Agents",
+          "Machine Learning",
+          "Computer Vision",
+          "AI APIs"
+        ]
+      },
+      {
+        "id": "03",
+        "slug": "automation",
+        "title": "AUTOMATION",
+        "body": "Transform repetitive workflows into intelligent systems that observe, decide and act.",
+        "tags": [
+          "Workflow automation",
+          "API integration",
+          "AI automation",
+          "Agentic workflows",
+          "Business process"
+        ]
+      },
+      {
+        "id": "04",
+        "slug": "saas-platforms",
+        "title": "SAAS PLATFORMS",
+        "body": "Design and engineer scalable SaaS products — multi-tenant foundations, billing and dashboards.",
+        "tags": [
+          "Multi-tenant",
+          "Authentication",
+          "Subscriptions",
+          "Dashboards",
+          "Analytics",
+          "Cloud architecture"
+        ]
+      },
+      {
+        "id": "05",
+        "slug": "landing-pages",
+        "title": "LANDING PAGES",
+        "body": "Premium interactive landing pages focused on brand, conversion and motion — without template noise.",
+        "tags": [
+          "Brand",
+          "Conversion",
+          "Performance",
+          "Motion",
+          "Storytelling"
+        ]
+      },
+      {
+        "id": "06",
+        "slug": "digital-products",
+        "title": "DIGITAL PRODUCTS",
+        "body": "From idea to production — discovery through deployment and continuous optimization.",
+        "tags": [
+          "Discovery",
+          "UI/UX",
+          "Prototype",
+          "MVP",
+          "Engineering",
+          "Deployment"
+        ]
+      }
+    ]
+  },
+  "aiHome": {
+    "label": "03 — AI",
+    "title": "AI that doesn't just answer. It acts.",
+    "body": "Nodes, signals and graphs — the same Intelligence Core, reshaped into an acting loop.",
+    "outcome": "The result is software that can observe context, reason with tools, and take safe action — not a chat demo.",
+    "steps": [
+      {
+        "title": "OBSERVE",
+        "body": "Ingest signals from users, data and systems."
+      },
+      {
+        "title": "REASON",
+        "body": "Retrieve, evaluate and plan the next move."
+      },
+      {
+        "title": "DECIDE",
+        "body": "Choose actions with guardrails and confidence."
+      },
+      {
+        "title": "ACT",
+        "body": "Call tools, APIs and workflows in production."
+      },
+      {
+        "title": "LEARN",
+        "body": "Measure outcomes and improve the loop."
+      }
+    ]
+  },
+  "automationHome": {
+    "label": "04 — AUTOMATION",
+    "title": "Turn repetitive work into intelligent systems.",
+    "body": "A living workflow — nodes activate as you scroll; packets travel the same Core.",
+    "caption": "From customer intent to action across apps, agents and data.",
+    "scrollHint": "Swipe to explore the pipeline",
+    "nodes": [
+      "CUSTOMER",
+      "WEB APP",
+      "API",
+      "AI AGENT",
+      "DATABASE",
+      "CRM",
+      "ACTION"
+    ]
+  },
+  "engineeringHome": {
+    "label": "05 — ENGINEERING",
+    "title": "From idea to production.",
+    "body": "An engineering partner — architecture, integration and scale. Not a fake dashboard.",
+    "codeSnippet": "// system.architecture\nlayers: [ edge, api, intelligence, data, ops ]\nconnect(discover → design → engineer → integrate → deploy → scale)",
+    "steps": [
+      {
+        "title": "DISCOVER",
+        "body": "Clarify goals, constraints and success metrics."
+      },
+      {
+        "title": "DESIGN",
+        "body": "Shape UX, data models and system boundaries."
+      },
+      {
+        "title": "ENGINEER",
+        "body": "Build reliable interfaces, APIs and intelligence."
+      },
+      {
+        "title": "INTEGRATE",
+        "body": "Connect tools, auth, data and third parties."
+      },
+      {
+        "title": "DEPLOY",
+        "body": "Ship with CI/CD, observability and rollback paths."
+      },
+      {
+        "title": "SCALE",
+        "body": "Harden performance, cost and operational load."
+      }
+    ]
+  },
+  "approachHome": {
+    "label": "05B — APPROACH",
+    "title": "How we approach every build.",
+    "body": "Three moves that keep products coherent from first sketch to production.",
+    "items": [
+      {
+        "title": "Discover",
+        "body": "We pressure-test the idea: users, workflows, risks and what “done” actually means."
+      },
+      {
+        "title": "Design systems",
+        "body": "We design the product and the platform together — UI, data, AI and ops as one story."
+      },
+      {
+        "title": "Ship & iterate",
+        "body": "We launch in slices, measure what matters, and evolve without rewriting the foundation."
+      }
+    ]
+  },
+  "processHome": {
+    "label": "05C — PROCESS",
+    "title": "From brief to evolving system.",
+    "body": "A clear path you can follow — without ceremony that slows shipping.",
+    "steps": [
+      {
+        "title": "Brief",
+        "body": "Align on outcomes, scope and constraints."
+      },
+      {
+        "title": "Architecture",
+        "body": "Define the system map before heavy build."
+      },
+      {
+        "title": "Build",
+        "body": "Implement in vertical slices with review loops."
+      },
+      {
+        "title": "Launch",
+        "body": "Deploy, monitor and stabilize in production."
+      },
+      {
+        "title": "Evolve",
+        "body": "Extend features, intelligence and scale over time."
+      }
+    ]
+  },
+  "technologyHome": {
+    "label": "06 — TECHNOLOGY",
+    "title": "Technology constellation.",
+    "body": "Not a logo wall — five clusters inside the same Core. Focus a group to highlight it.",
+    "groups": [
+      {
+        "id": "ai",
+        "label": "AI",
+        "why": "Intelligence that retrieves, reasons and acts.",
+        "items": [
+          "LLMs",
+          "RAG",
+          "Agents",
+          "Computer Vision",
+          "Machine Learning"
+        ]
+      },
+      {
+        "id": "web",
+        "label": "WEB",
+        "why": "Product interfaces and APIs built to last.",
+        "items": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Node.js"
+        ]
+      },
+      {
+        "id": "cloud",
+        "label": "CLOUD",
+        "why": "Infrastructure that deploys and scales cleanly.",
+        "items": [
+          "AWS",
+          "Cloud infrastructure",
+          "Docker",
+          "CI/CD"
+        ]
+      },
+      {
+        "id": "data",
+        "label": "DATA",
+        "why": "Structured memory for products and AI.",
+        "items": [
+          "PostgreSQL",
+          "Vector databases",
+          "Data pipelines"
+        ]
+      },
+      {
+        "id": "automation",
+        "label": "AUTOMATION",
+        "why": "Workflows that connect systems end to end.",
+        "items": [
+          "APIs",
+          "Workflows",
+          "AI Agents",
+          "Integrations"
+        ]
+      }
+    ]
+  },
+  "experimentsHome": {
+    "label": "07 — EXPERIMENTS",
+    "title": "Things We're Building.",
+    "body": "Conceptual and experimental work — clearly labeled. Nothing fabricated as a client case study.",
+    "empty": "Nothing in this filter right now. Try another label — or check back as experiments land.",
+    "filters": [
+      "ALL",
+      "CONCEPT",
+      "EXPERIMENT",
+      "PROTOTYPE",
+      "ARCHIVE"
+    ],
+    "items": [
+      {
+        "title": "AI AGENT SYSTEM",
+        "label": "EXPERIMENT",
+        "blurb": "Multi-step agents that observe, decide and act across tools — a lab for production-shaped loops."
+      },
+      {
+        "title": "SAAS PLATFORM CONCEPT",
+        "label": "CONCEPT",
+        "blurb": "Multi-tenant product architecture for recurring value — framed before heavy engineering."
+      },
+      {
+        "title": "AUTOMATION ENGINE",
+        "label": "PROTOTYPE",
+        "blurb": "Workflow graph that turns APIs and agents into actions with visible state."
+      },
+      {
+        "title": "AI DOCUMENT SYSTEM",
+        "label": "EXPERIMENT",
+        "blurb": "RAG pipelines for structured retrieval and generation inside real product surfaces."
+      },
+      {
+        "title": "COMPUTER VISION LAB",
+        "label": "EXPERIMENT",
+        "blurb": "Perception experiments for product and operations use cases — still exploratory."
+      },
+      {
+        "title": "DIGITAL PRODUCT CONCEPT",
+        "label": "CONCEPT",
+        "blurb": "End-to-end product framing from idea to production path, without inventing fake clients."
+      }
+    ]
+  },
+  "faqHome": {
+    "label": "08B — FAQ",
+    "title": "Questions before we start.",
+    "body": "Straight answers — so you know how we collaborate.",
+    "items": [
+      {
+        "q": "What kinds of projects do you take?",
+        "a": "Web applications, AI systems, automation, SaaS platforms, landing experiences and full digital products — especially where craft and systems thinking both matter."
+      },
+      {
+        "q": "When does AI belong in the build?",
+        "a": "When it creates leverage: retrieval, agents, vision or automation inside a real workflow — not as a novelty chat overlay."
+      },
+      {
+        "q": "How long does a typical engagement take?",
+        "a": "It depends on scope. We start with a clear brief and architecture slice, then ship in vertical increments you can review."
+      },
+      {
+        "q": "Do you work in English and Japanese?",
+        "a": "Yes. The site and collaboration can run in English or Japanese — useful for regional and global teams."
+      },
+      {
+        "q": "How do we kick off?",
+        "a": "Send a short brief via Contact: goals, constraints, timeline and links. We'll reply with next steps and fit."
+      },
+      {
+        "q": "Are the experiments real client work?",
+        "a": "No. Experiments are labeled CONCEPT, EXPERIMENT or PROTOTYPE. We never invent clients, awards or metrics."
+      }
+    ]
   },
   "aboutHome": {
     "label": "08 — ABOUT",
     "headline": "GINVIFY is a technology company focused on software, artificial intelligence and intelligent automation.",
     "secondary": "Engineering from Vietnam. Built for global teams.",
+    "body": "We combine product craft with systems engineering — so interfaces, data and intelligence stay coherent as you scale.",
     "location": "Ho Chi Minh City, Vietnam"
   }
 }
