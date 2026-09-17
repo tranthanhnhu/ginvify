@@ -15,6 +15,9 @@
 /.next/
 /out/
 
+# Hostinger static deploy repo (own .git; synced from out/)
+/outhostinger/
+
 # production
 /build
 

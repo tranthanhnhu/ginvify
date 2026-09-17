@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { locales, serviceSlugs, siteUrl } from "@/lib/i18n/config";
 
+export const dynamic = "force-static";
+
 const staticPaths = [
   "",
   "/services",

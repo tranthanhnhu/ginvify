@@ -1,0 +1,14 @@
+# Apache (Hostinger): directory indexes + SPA-ish fallbacks for static export
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Prefer trailing-slash directories produced by Next `trailingSlash: true`
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+</IfModule>
